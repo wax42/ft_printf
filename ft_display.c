@@ -6,32 +6,39 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 16:36:11 by vguerand          #+#    #+#             */
-/*   Updated: 2017/12/11 17:04:41 by vguerand         ###   ########.fr       */
+/*   Updated: 2017/12/11 18:06:34 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+int ft_display_htag(int i, const char *restrict format)
+{
+	return (0);
+}
 
-
-void ft_display(const char *restrict format, int i, va_list ap, p_f parse)
+int ft_display(const char *restrict format, va_list *ap, p_f parse)
 {
 	long long 		var_int;
 	unsigned char 	*var_char;
+	long			val_ret;
 
-	while (!ft_strchr("hljz", format[i]))
- 		i++; // on zappe les flags de merde
+	ft_putstr("ENTER IN DISPLAY");
+	while (!ft_strchr("hljz", format[parse.i]))
+ 		parse.i++; // on zappe les flags de merde
 
-	if (ft_strchr("DdioOuUxX", format[i]))
+	if (ft_strchr("DdioOuUxXp", format[parse.i]))
 	{
-		var_int = va_arg(ap, long long);
+		var_int = va_arg(*ap, long long);
 		if (var_int < 0)
 			parse.neg_int = 1;
-		var_char = ft_itoa(var_int) + parse.neg_int;
+		var_char = ft_itoa(var_int) + parse.neg_int;// refaire le itoa en long long
+		//et qui retourne un long long char
 	}
-	else if (ft_strchr("sScC", format[i]))
-		var_char = va_arg(ap, unsigned char *)
-	else if (ft_strchr("p"))
-		//type de merde
-
+	else if (ft_strchr("sScC", format[parse.i]))
+		var_char = va_arg(*ap, unsigned char *);
+	if (parse.htag == 1)
+		val_ret += ft_display_htag(parse.i, format);
+	ft_putendl(var_char);
+	return (0);
 }

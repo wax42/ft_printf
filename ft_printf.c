@@ -6,7 +6,7 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 19:39:39 by vguerand          #+#    #+#             */
-/*   Updated: 2017/12/11 17:05:37 by vguerand         ###   ########.fr       */
+/*   Updated: 2017/12/11 18:14:52 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,86 +39,88 @@ p_f 	ft_init_struct()
 }
 
 
-int 	ft_parse_format(const char *restrict format, int i, va_list ap)
+p_f 	ft_parse_format(const char *restrict format, int i, va_list *ap)
 {
 	p_f parse;
 
-	while (!(ft_strchr("hljzsSpdDioOuUxXcC", format[i])))
+	parse = ft_init_struct();
+	parse.i = i;
+	while (!(ft_strchr("hljzsSpdDioOuUxXcC", format[parse.i])))
 	{
-		if (format[i] == '#')
+		if (format[parse.i] == '#')
 		{
 			parse.htag = 1;
-			while (format[i] == '#')
-				i++;
+			while (format[parse.i] == '#')
+				parse.i++;
 		}
-		if (format[i] == 32)
+		if (format[parse.i] == 32)
 		{
 			parse.space = 1;
-			while (format[i] == 32)
-				i++;
+			while (format[parse.i] == 32)
+				parse.i++;
 		}
-		if (format[i] == '.')
+		if (format[parse.i] == '.')
 		{
 			parse.precision.val = 1;
-			while (format[i] == '.')
-				i++;
-			if (format[i] == '*')
-				parse.precision.width =  va_arg(ap, int);
+			while (format[parse.i] == '.')
+				parse.i++;
+			if (format[parse.i] == '*')
+				parse.precision.width =  va_arg(*ap, int);
 			else
 			{
-				parse.precision.width = ft_atoi(format + i);
-				i += ft_strlen(ft_itoa(parse.zero.width));
+				parse.precision.width = ft_atoi(format + parse.i);
+				parse.i += ft_strlen(ft_itoa(parse.zero.width));
 			}
 		}
-		if (format[i] == '-')
+		if (format[parse.i] == '-')
 		{
 			parse.neg.val = 1;
-			while (format[i] == '-')
+			while (format[parse.i] == '-')
 				i++;
-			if (format[i++] == '*')
-				parse.neg.width =  va_arg(ap, int);
+			if (format[parse.i++] == '*')
+				parse.neg.width =  va_arg(*ap, int);
 			else
 			{
-				parse.neg.width = ft_atoi(format + i);
-				i += ft_strlen(ft_itoa(parse.zero.width));
+				parse.neg.width = ft_atoi(format + parse.i);
+				parse.i += ft_strlen(ft_itoa(parse.zero.width));
 			}
 		}
-		if (format[i] == '+')
+		if (format[parse.i] == '+')
 		{
 			parse.plus = 1;
-			while (format[i] == '+')
-				i++;
+			while (format[parse.i] == '+')
+				parse.i++;
 		}
-		if (format[i] == '0')
+		if (format[parse.i] == '0')
 		{
 			parse.zero.val = 1;
-			while (format[i] == '0')
-				i++;
-			if (format[i++] == '*')
-				parse.zero.width =  va_arg(ap, int);
+			while (format[parse.i] == '0')
+				parse.i++;
+			if (format[parse.i++] == '*')
+				parse.zero.width =  va_arg(*ap, int);
 			else
 			{
-				parse.zero.width = ft_atoi(format + i);
-				i += ft_strlen(ft_itoa(parse.zero.width));
+				parse.zero.width = ft_atoi(format + parse.i);
+				parse.i += ft_strlen(ft_itoa(parse.zero.width));
 			}
 		}
-		if (format[i] == '*')
+		if (format[parse.i] == '*')
 		{
 			parse.width.val = 1;
-			while (format[i] == '*')
-				i++;
-			parse.zero.width = va_arg(ap, int);
+			while (format[parse.i] == '*')
+				parse.i++;
+			parse.zero.width = va_arg(*ap, int);
 		}
-		if (ft_isdigit(format[i]))
+		if (ft_isdigit(format[parse.i]))
 		{
 			parse.width.val = 1;
-			parse.width.width = ft_atoi(format + i);
-			i += ft_strlen(ft_itoa(parse.width.width));
+			parse.width.width = ft_atoi(format + parse.i);
+			parse.i += ft_strlen(ft_itoa(parse.width.width));
 		}
 		else
-			i++;
+			parse.i++; // maybe faut l enlever
 	}
-	return (i);
+	return (parse);
 }
 
 
@@ -128,11 +130,16 @@ int ft_printf(const char * restrict format, ...)
 	int 	i;
 	va_list ap;
 
+
 	va_start(ap, format);
-	while (format[i])
+	i = 0;
+	while (format[i] != '\0')
 	{
 		if (format[i] == '%')
-			i = ft_parse_format(format, i, ap);
+		{
+			if (format[i + 1] != '%')
+				ft_display(format, &ap, ft_parse_format(format, i, &ap));
+		}
 		i++;
 	}
 	return (0);
@@ -141,6 +148,13 @@ int ft_printf(const char * restrict format, ...)
 
 int main()
 {
-	printf("%p", "2");
+	int a;
+	int *ptr;
+
+	a = 2;
+	ptr = &a;
+	ft_printf("%... d", 2);
+	//printf("%d", a);
+	//printf("%p", "2");
 	return (0);
 }
