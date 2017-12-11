@@ -42,7 +42,7 @@ int 	ft_parse_format(const char *restrict format, int i, va_list ap)
 {
 	p_f parse;
 
-	while (ft_strcmp(&format[i], "duuXxblabla"))
+	while (ft_strcmp(&format[i], "hljzsSpdDioOuUxXcC"))
 	{
 		if (format[i] == '#')
 		{
@@ -117,7 +117,7 @@ int 	ft_parse_format(const char *restrict format, int i, va_list ap)
 		else
 			i++;
 	}
-	return (0);
+	return (i);
 }
 
 
