@@ -6,7 +6,7 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 19:39:39 by vguerand          #+#    #+#             */
-/*   Updated: 2017/12/11 15:23:59 by vguerand         ###   ########.fr       */
+/*   Updated: 2017/12/11 17:05:37 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ p_f 	ft_init_struct()
 	parse.neg.width = 0;
 
 	parse.plus = 0;
+	parse.neg_int = 0;
 
 	parse.width.val = 0;
 	parse.width.width = 0;
@@ -42,7 +43,7 @@ int 	ft_parse_format(const char *restrict format, int i, va_list ap)
 {
 	p_f parse;
 
-	while (ft_strcmp(&format[i], "hljzsSpdDioOuUxXcC"))
+	while (!(ft_strchr("hljzsSpdDioOuUxXcC", format[i])))
 	{
 		if (format[i] == '#')
 		{
@@ -140,6 +141,6 @@ int ft_printf(const char * restrict format, ...)
 
 int main()
 {
-	printf("%10s", "salut");
+	printf("%p", "2");
 	return (0);
 }

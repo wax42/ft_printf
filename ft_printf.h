@@ -6,7 +6,7 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 19:38:40 by vguerand          #+#    #+#             */
-/*   Updated: 2017/12/11 15:22:05 by vguerand         ###   ########.fr       */
+/*   Updated: 2017/12/11 16:51:31 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct		s_f
 	p_l	zero;
 	p_l	neg;
 	unsigned int plus;
+	unsigned int neg_int;
 	p_l	width;
 	p_l precision;
 }					p_f;
