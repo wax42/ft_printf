@@ -6,7 +6,7 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 19:39:39 by vguerand          #+#    #+#             */
-/*   Updated: 2017/12/12 12:35:42 by vguerand         ###   ########.fr       */
+/*   Updated: 2017/12/12 14:10:10 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,70 @@ p_f 	ft_init_struct()
 	return (parse);
 }
 
+void 	ft_parse_format2(const char *restrict format, p_f *parse, va_list *ap)
+{
+	if (format[parse->i] == '-')
+	{
+		parse->neg.val = 1;
+		while (format[parse->i] == '-')
+			parse->i++;
+		if (format[parse->i + 1] == '*')
+			parse->neg.width =  va_arg(*ap, int);
+		else
+		{
+			parse->neg.width = ft_atoi(format + parse->i);
+			parse->i += ft_strlen(ft_itoa(parse->zero.width));
+		}
+	}
+	if (format[parse->i] == '+')
+	{
+		parse->plus = 1;
+		while (format[parse->i] == '+')
+			parse->i++;
+	}
+	if (format[parse->i] == '0')
+	{
+		parse->zero.val = 1;
+		while (format[parse->i] == '0')
+			parse->i++;
+		if (format[parse->i + 1] == '*')
+			parse->zero.width =  va_arg(*ap, int);
+		else
+		{
+			parse->zero.width = ft_atoi(format + parse->i);
+			parse->i += ft_strlen(ft_itoa(parse->zero.width));
+		}
+	}
+}
+
+void 	ft_parse_format1(const char *restrict format, p_f *parse, va_list *ap)
+{
+	if (format[parse->i] == '#')
+	{
+		parse->htag = 1;
+		while (format[parse->i] == '#')
+			parse->i++;
+	}
+	if (format[parse->i] == 32)
+	{
+		parse->space = 1;
+		while (format[parse->i] == 32)
+			parse->i++;
+	}
+	if (format[parse->i] == '.')
+	{
+		parse->precision.val = 1;
+		while (format[parse->i] == '.')
+			parse->i++;
+		if (format[parse->i + 1] == '*')
+			parse->precision.width =  va_arg(*ap, int);
+		else
+		{
+			parse->precision.width = ft_atoi(format + parse->i);
+			parse->i += ft_strlen(ft_itoa(parse->zero.width));
+		}
+	}
+}
 
 p_f 	ft_parse_format(const char *restrict format, int i, va_list *ap)
 {
@@ -47,64 +111,8 @@ p_f 	ft_parse_format(const char *restrict format, int i, va_list *ap)
 	parse.i = i;
 	while (!(ft_strchr("hljzsSpdDioOuUxXcC", format[parse.i])))
 	{
-		if (format[parse.i] == '#')
-		{
-			parse.htag = 1;
-			while (format[parse.i] == '#')
-				parse.i++;
-		}
-		if (format[parse.i] == 32)
-		{
-			parse.space = 1;
-			while (format[parse.i] == 32)
-				parse.i++;
-		}
-		if (format[parse.i] == '.')
-		{
-			parse.precision.val = 1;
-			while (format[parse.i] == '.')
-				parse.i++;
-			if (format[parse.i + 1] == '*')
-				parse.precision.width =  va_arg(*ap, int);
-			else
-			{
-				parse.precision.width = ft_atoi(format + parse.i);
-				parse.i += ft_strlen(ft_itoa(parse.zero.width));
-			}
-		}
-		if (format[parse.i] == '-')
-		{
-			parse.neg.val = 1;
-			while (format[parse.i] == '-')
-				parse.i++;
-			ft_putendl("entrer in -");
-			if (format[parse.i + 1] == '*')
-				parse.neg.width =  va_arg(*ap, int);
-			else
-			{
-				parse.neg.width = ft_atoi(format + parse.i);
-				parse.i += ft_strlen(ft_itoa(parse.zero.width));
-			}
-		}
-		if (format[parse.i] == '+')
-		{
-			parse.plus = 1;
-			while (format[parse.i] == '+')
-				parse.i++;
-		}
-		if (format[parse.i] == '0')
-		{
-			parse.zero.val = 1;
-			while (format[parse.i] == '0')
-				parse.i++;
-			if (format[parse.i + 1] == '*')
-				parse.zero.width =  va_arg(*ap, int);
-			else
-			{
-				parse.zero.width = ft_atoi(format + parse.i);
-				parse.i += ft_strlen(ft_itoa(parse.zero.width));
-			}
-		}
+		ft_parse_format1(format, &parse, ap);
+		ft_parse_format2(format, &parse, ap);
 		if (format[parse.i] == '*')
 		{
 			parse.width.val = 1;
@@ -118,8 +126,6 @@ p_f 	ft_parse_format(const char *restrict format, int i, va_list *ap)
 			parse.width.width = ft_atoi(format + parse.i);
 			parse.i += ft_strlen(ft_itoa(parse.width.width));
 		}
-		else
-			parse.i++; // maybe faut l enlever
 	}
 	return (parse);
 }
@@ -139,7 +145,7 @@ int ft_printf(const char * restrict format, ...)
 		if (format[i] == '%')
 		{
 			if (format[i + 1] != '%')
-				ft_display(format, &ap, ft_parse_format(format, i, &ap));
+				ft_display(format, &ap, ft_parse_format(format, i + 1, &ap));
 		}
 		i++;
 	}
