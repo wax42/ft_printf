@@ -6,7 +6,7 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 19:39:39 by vguerand          #+#    #+#             */
-/*   Updated: 2017/12/12 14:26:08 by vguerand         ###   ########.fr       */
+/*   Updated: 2017/12/12 14:28:00 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,11 +102,11 @@ p_f				ft_parse_format(const char *restrict format, int i, va_list *ap)
 		ft_parse_format1(format, &parse, ap);
 		ft_parse_format2(format, &parse, ap);
 		ft_parse_format3(format, &parse, ap);
-		if (ft_isdigit(format[parse->i]))
+		if (ft_isdigit(format[parse.i]))
 		{
-			parse->width.val = 1;
-			parse->width.width = ft_atoi(format + parse->i);
-			parse->i += ft_strlen(ft_itoa(parse->width.width));
+			parse.width.val = 1;
+			parse.width.width = ft_atoi(format + parse.i);
+			parse.i += ft_strlen(ft_itoa(parse.width.width));
 		}
 	}
 	return (parse);
