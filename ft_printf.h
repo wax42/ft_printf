@@ -6,7 +6,7 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 19:38:40 by vguerand          #+#    #+#             */
-/*   Updated: 2017/12/12 14:35:20 by vguerand         ###   ########.fr       */
+/*   Updated: 2017/12/12 15:49:41 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,11 @@ int ft_display(const char *restrict format, va_list *ap, p_f parse);
 
 unsigned char            *ft_itoa_long(long long int n);
 
-int ft_display_neg(p_f parse, unsigned char *var_char);
+int 	ft_display_neg(p_f parse, unsigned char *var_char);
+
+char    *ft_to_octal(int n);
+
+char    *ft_hex(int n);
 
 p_f		ft_init_struct(void);
 
