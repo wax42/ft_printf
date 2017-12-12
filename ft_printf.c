@@ -6,7 +6,7 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 19:39:39 by vguerand          #+#    #+#             */
-/*   Updated: 2017/12/11 18:14:52 by vguerand         ###   ########.fr       */
+/*   Updated: 2017/12/12 12:35:42 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ p_f 	ft_parse_format(const char *restrict format, int i, va_list *ap)
 			parse.precision.val = 1;
 			while (format[parse.i] == '.')
 				parse.i++;
-			if (format[parse.i] == '*')
+			if (format[parse.i + 1] == '*')
 				parse.precision.width =  va_arg(*ap, int);
 			else
 			{
@@ -76,8 +76,9 @@ p_f 	ft_parse_format(const char *restrict format, int i, va_list *ap)
 		{
 			parse.neg.val = 1;
 			while (format[parse.i] == '-')
-				i++;
-			if (format[parse.i++] == '*')
+				parse.i++;
+			ft_putendl("entrer in -");
+			if (format[parse.i + 1] == '*')
 				parse.neg.width =  va_arg(*ap, int);
 			else
 			{
@@ -96,7 +97,7 @@ p_f 	ft_parse_format(const char *restrict format, int i, va_list *ap)
 			parse.zero.val = 1;
 			while (format[parse.i] == '0')
 				parse.i++;
-			if (format[parse.i++] == '*')
+			if (format[parse.i + 1] == '*')
 				parse.zero.width =  va_arg(*ap, int);
 			else
 			{
@@ -142,19 +143,5 @@ int ft_printf(const char * restrict format, ...)
 		}
 		i++;
 	}
-	return (0);
-}
-
-
-int main()
-{
-	int a;
-	int *ptr;
-
-	a = 2;
-	ptr = &a;
-	ft_printf("%... d", 2);
-	//printf("%d", a);
-	//printf("%p", "2");
 	return (0);
 }
