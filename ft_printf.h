@@ -6,7 +6,7 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 19:38:40 by vguerand          #+#    #+#             */
-/*   Updated: 2017/12/12 14:17:28 by vguerand         ###   ########.fr       */
+/*   Updated: 2017/12/12 14:24:04 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,6 @@ unsigned char            *ft_itoa_long(long long int n);
 
 int ft_display_neg(p_f parse, unsigned char *var_char);
 
-p_f		ft_init_struct();
+p_f		ft_init_struct(void);
 
 #endif
