@@ -6,7 +6,7 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 19:38:40 by vguerand          #+#    #+#             */
-/*   Updated: 2017/12/12 14:24:04 by vguerand         ###   ########.fr       */
+/*   Updated: 2017/12/12 14:35:20 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int ft_printf(const char * restrict format, ...);
 typedef struct 		s_l
 {
 	unsigned int 	val;
-	unsigned int 	width;
+	int 	width;
 }					p_l;
 
 

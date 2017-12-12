@@ -6,16 +6,11 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 16:36:11 by vguerand          #+#    #+#             */
-/*   Updated: 2017/12/12 12:29:32 by vguerand         ###   ########.fr       */
+/*   Updated: 2017/12/12 15:06:08 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-int ft_display_htag(int i, const char *restrict format)
-{
-	return (0);
-}
 
 int ft_display(const char *restrict format, va_list *ap, p_f parse)
 {
@@ -23,11 +18,14 @@ int ft_display(const char *restrict format, va_list *ap, p_f parse)
 	unsigned char 	*var_char;
 	long			val_ret;
 
+	val_ret = 0;
+	var_char = NULL;
 	while (!ft_strchr("hljz", format[parse.i]))
  		parse.i++; // on zappe les flags de merde
 
-	if (ft_strchr("DdioOuUxXp", format[parse.i]))
+	if (ft_strchr("DioOuUxXp", format[parse.i]))
 	{
+
 		var_int = va_arg(*ap, long long);
 		if (var_int < 0)
 			parse.neg_int = 1;
@@ -36,8 +34,6 @@ int ft_display(const char *restrict format, va_list *ap, p_f parse)
 	}
 	else if (ft_strchr("sScC", format[parse.i]))
 		var_char = va_arg(*ap, unsigned char *);
-	if (parse.htag == 1)
-		val_ret += ft_display_htag(parse.i, format);
 	ft_putendl("On passe a l'affichage");
 	ft_display_neg(parse, var_char);
 	return (0);
