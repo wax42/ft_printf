@@ -6,7 +6,7 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 19:38:40 by vguerand          #+#    #+#             */
-/*   Updated: 2017/12/18 17:18:28 by vguerand         ###   ########.fr       */
+/*   Updated: 2017/12/18 19:27:49 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ int		ft_atoi_base(char *nb, int base);
 
 void	ft_putwchar(wchar_t c);
 
+int find_nbr(p_f parse, int size, int str);
+
 int ft_display_cs(const char *restrict format, va_list *ap, p_f parse);
 
 int 	ft_display_c(int size, int c);
@@ -65,7 +67,7 @@ p_f		ft_init_struct(void);
 
 char 	*ft_strrev(char *str);
 
-int aff_struct(char *str, p_f parse);
+int aff_struct(int str, p_f parse);
 
 int     ft_display_htag(p_f parse);
 
