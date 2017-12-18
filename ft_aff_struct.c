@@ -6,7 +6,7 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 15:54:28 by vguerand          #+#    #+#             */
-/*   Updated: 2017/12/18 16:20:49 by vguerand         ###   ########.fr       */
+/*   Updated: 2017/12/18 16:41:20 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ int aff_struct(char *str, va_list *ap, p_f parse)
 			parse.val_ret++;
 		}
 	}
-	if (parse.htag.val)
-		parse.val_ret += ft_display_htag();
 	if (parse.plus)
 	{
 		if (parse.space.witdh == 1)
@@ -32,11 +30,19 @@ int aff_struct(char *str, va_list *ap, p_f parse)
 			ft_putchar('+');
 		parse.val_ret++;
 	}
+	else if (parse.space.width == 1)
+	{
+		ft_putchar('-');
+		parse.val_ret++;
+	}
+	if (parse.htag.val)
+		parse.val_ret += ft_display_htag();
 	if (parse.zero.val == 1 && parse.neg.val == 0 && parse.precision.val == 0)
 		parse.val_ret += ft_display_c('0');
 	if (parse.width.val == 1 || (parse.zero.val == 1 && parse.neg.val == 0 && parse.precision.val == 0))
 		parse.val_ret += ft_display_c(32);
-	parse.val_ret += ft_affiche_char();
+	parse.val_ret += ft_display_char();
 	if (parse.neg.val)
-		ft_display_c(32);
+		parse.val_ret += ft_display_c(32);
+	return (parse.val_ret)
 }
