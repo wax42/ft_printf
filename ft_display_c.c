@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-int     ft_display_c(p_f parse, int size, int c)
+int     ft_display_c(int size, int c)
 {
     int i;
 

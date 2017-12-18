@@ -14,17 +14,10 @@
 
 int ft_display(const char *restrict format, va_list *ap, p_f parse)
 {
-    long long         var_int;
-    unsigned char     *var_char;
-    int        val_ret;
-    int base;
-    char *type;
+    if ((parse.val_ret = ft_display_cs(format, ap, parse)))
+        return (parse.val_ret);
 
-    val_ret = 0;
-    var_char = NULL;
-    base = 10;
-    if ((val_ret = ft_display_cs())) // gere le l et le ll
-        return (val_ret);
+/*
     if ((val_ret = ft_display_diox_hh())) //gere le h et le hh
         return (val_ret);
     if ((val_ret = ft_display_diox_ll())) // gere le l et le ll
@@ -48,19 +41,6 @@ int ft_display(const char *restrict format, va_list *ap, p_f parse)
     if ((val_ret = ft_display_p_none()))
         return (val_ret);
 
-
-    if ((type = ft_strchr("DdioOxX", format[parse.i])))
-    {
-        var_int = va_arg(*ap, signed long);
-        if (var_int < 0)
-            parse.neg_int = 1;
-
-        ft_putnbr(base);
-        var_char = (unsigned char *)ft_itoa_base(var_int, base) + parse.neg_int;
-    }
-    else if (ft_strchr("sScC", format[parse.i]))
-        var_char = va_arg(*ap, unsigned char *);
-    ft_putendl("On passe a l'affichage");
-    ft_display_neg(parse, var_char);
+*/
     return (0);
 }

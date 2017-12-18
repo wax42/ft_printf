@@ -54,7 +54,9 @@ int 	aff_struct(char *str, va_list *ap, p_f parse);
 
 void	ft_putwchar(wchar_t c);
 
-int 	ft_display_c(p_f parse, int size, int c);
+int ft_display_cs(const char *restrict format, va_list *ap, p_f parse);
+
+int 	ft_display_c(int size, int c);
 
 int 	ft_display_char(char *str, p_f parse);
 

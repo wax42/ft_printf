@@ -19,13 +19,16 @@ p_f		ft_init_struct(void)
 	parse.htag = 0;
 	parse.precision.val = 0;
 	parse.precision.width = 0;
-	parse.space = 0;
+	parse.space.val = 0;
+	parse.space.width = 0;
+
+	parse.val_ret = 0;
+
 	parse.zero.val = 0;
 	parse.zero.width = 0;
 	parse.neg.val = 0;
 	parse.neg.width = 0;
 	parse.plus = 0;
-	parse.neg_int = 0;
 	parse.width.val = 0;
 	parse.width.width = 0;
 	return (parse);
