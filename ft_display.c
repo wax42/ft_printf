@@ -6,7 +6,7 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 16:36:11 by vguerand          #+#    #+#             */
-/*   Updated: 2017/12/18 13:52:41 by vguerand         ###   ########.fr       */
+/*   Updated: 2017/12/18 15:59:58 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,8 @@ int ft_display(const char *restrict format, va_list *ap, p_f parse)
     val_ret = 0;
     var_char = NULL;
     base = 10;
-    if ((val_ret = ft_display_cs_l())) // gere le l et le ll
+    if ((val_ret = ft_display_cs())) // gere le l et le ll
         return (val_ret);
-    if ((val_ret = ft_display_cs_none()))
-        return (val_ret);
-
     if ((val_ret = ft_display_diox_hh())) //gere le h et le hh
         return (val_ret);
     if ((val_ret = ft_display_diox_ll())) // gere le l et le ll
