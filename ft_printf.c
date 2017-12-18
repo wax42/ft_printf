@@ -6,7 +6,7 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 19:39:39 by vguerand          #+#    #+#             */
-/*   Updated: 2017/12/18 13:41:05 by vguerand         ###   ########.fr       */
+/*   Updated: 2017/12/18 14:36:55 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static void		ft_parse_format1(const char *restrict format, p_f *parse,\
 	}
 	if (format[parse->i] == 32)
 	{
-		parse->space = 1;
+		parse->space.val = 1;
 		while (format[parse->i] == 32)
 			parse->i++;
 	}
