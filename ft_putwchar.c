@@ -6,7 +6,7 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 16:32:59 by vguerand          #+#    #+#             */
-/*   Updated: 2017/12/13 16:47:29 by vguerand         ###   ########.fr       */
+/*   Updated: 2017/12/18 11:23:36 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	ft_putwchar(wchar_t c)
 {
 	int		character;
 	char	*bin;
-	char	**mask;1
+	char	**mask;
 	int		to_print;
 	int		i;
 

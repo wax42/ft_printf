@@ -6,7 +6,7 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 19:39:39 by vguerand          #+#    #+#             */
-/*   Updated: 2017/12/12 14:28:00 by vguerand         ###   ########.fr       */
+/*   Updated: 2017/12/18 13:41:05 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,10 @@ int				ft_printf(const char *restrict format, ...)
 		{
 			if (format[i + 1] != '%')
 				ft_display(format, &ap, ft_parse_format(format, i + 1, &ap));
+			else
+			{
+				ft_putchar('%');
+			}
 		}
 		i++;
 	}
