@@ -6,11 +6,19 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 15:54:28 by vguerand          #+#    #+#             */
-/*   Updated: 2017/12/18 16:41:20 by vguerand         ###   ########.fr       */
+/*   Updated: 2017/12/18 17:18:36 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+int find_nbr(p_f parse, int size, char *str)
+{
+	if (ft_strchr("s,S", parse.type)
+		return (parse.precision.width > ft_strlen(str)) ? (ft_strlen(str)) : parse.precison.width;
+	else
+		return (size - parse.precision.width);
+}
 
 int aff_struct(char *str, va_list *ap, p_f parse)
 {
@@ -37,12 +45,14 @@ int aff_struct(char *str, va_list *ap, p_f parse)
 	}
 	if (parse.htag.val)
 		parse.val_ret += ft_display_htag();
+
 	if (parse.zero.val == 1 && parse.neg.val == 0 && parse.precision.val == 0)
-		parse.val_ret += ft_display_c('0');
+		parse.val_ret += ft_display_c(parse, find_nbr(parse, parse.zero.width, str), '0');
+
 	if (parse.width.val == 1 || (parse.zero.val == 1 && parse.neg.val == 0 && parse.precision.val == 0))
-		parse.val_ret += ft_display_c(32);
-	parse.val_ret += ft_display_char();
+		parse.val_ret += ft_display_c(parse, find_nbr(parse, parse.width.width, str), '0');
+	parse.val_ret += ft_display_char(str, parse);
 	if (parse.neg.val)
-		parse.val_ret += ft_display_c(32);
+		parse.val_ret += ft_display_c(parse, find_nbr(parse, parse.neg.width, str), '0');
 	return (parse.val_ret)
 }
