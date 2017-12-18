@@ -11,15 +11,17 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#define TEXT "BONJOUR"
+#define TEXT1 "%-8s"
 
 int main()
 {
-	int a;
-	int *ptr;
+	ft_printf(TEXT1, TEXT);
 
-	a = 2;
-	ptr = &a;
-	ft_printf("%-9d", 2);
+	ft_putchar('\n');
+
+	printf(TEXT1, TEXT);
+
 	//printf("%d", a);
 	//printf("%p", "2");
 	return (0);

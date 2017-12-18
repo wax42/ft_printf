@@ -27,6 +27,7 @@ typedef struct		s_f
 {
 
 	char   		type;
+	char 			flag;
 	unsigned int htag;
 	p_l space; // width prendra0 si l'argument est posstif et 1 si il est negatif
 	p_l	zero;

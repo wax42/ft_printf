@@ -22,8 +22,13 @@ int ft_display_cs(const char *restrict format, va_list *ap, p_f parse)
 	nbr = 0;
 	str1 = NULL;
 	str = NULL;
-	while((parse.type = ft_cchr("l", format[parse.i++])))
+	while((parse.flag = ft_cchr("l", format[parse.i])))
+	{
 		nbr++;
+		parse.i++;
+	}
+	if (!(parse.type = ft_cchr("sScC", format[parse.i])))
+		return (0);
 	if (nbr == 0)
 	{
 		str = va_arg(*ap, char *);
