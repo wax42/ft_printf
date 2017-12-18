@@ -27,12 +27,12 @@ int ft_display_cs(const char *restrict format, va_list *ap, p_f parse)
 	if (nbr == 0)
 	{
 		str = va_arg(*ap, char *);
-		parse.val_ret = aff_struct(str, ap, parse);
+		parse.val_ret = aff_struct(str, parse);
 	}
 	if (nbr >= 1)
 	{
 		str1 = va_arg(*ap, wchar_t *);
-		parse.val_ret = aff_struct(str, ap, parse);
+		parse.val_ret = aff_struct(str, parse);
 	}
 	return (parse.val_ret);
 }

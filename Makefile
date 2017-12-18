@@ -8,7 +8,7 @@ CFLAGS = -Wall -Wextra -Werror
 
 HEAD = ft_printf.h
 
-SRC = ft_display_c.c ft_cchr.c ft_display_cs.c ft_itoa_base.c ft_atoi_base.c ft_putwchar.c ft_nbrlen.c ft_strrev.c ft_printf.c ft_display.c ft_itoa.c ft_init_struct.c
+SRC = ft_putstr_len.c ft_display_char.c ft_display_htag.c ft_aff_struct.c ft_display_c.c ft_cchr.c ft_display_cs.c ft_itoa_base.c ft_atoi_base.c ft_putwchar.c ft_nbrlen.c ft_strrev.c ft_printf.c ft_display.c ft_itoa.c ft_init_struct.c
 
 OBJ = $(patsubst %.c,%.o,$(addprefix $(PATH_SRC), $(SRC)))
 

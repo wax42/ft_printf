@@ -50,8 +50,6 @@ char    *ft_itoa_base(int n, int base, int uppercase);
 
 int		ft_atoi_base(char *nb, int base);
 
-int 	aff_struct(char *str, va_list *ap, p_f parse);
-
 void	ft_putwchar(wchar_t c);
 
 int ft_display_cs(const char *restrict format, va_list *ap, p_f parse);
@@ -65,5 +63,9 @@ int		ft_putstr_len(char const *s, int len);
 p_f		ft_init_struct(void);
 
 char 	*ft_strrev(char *str);
+
+int aff_struct(char *str, p_f parse);
+
+int     ft_display_htag(p_f parse);
 
 #endif

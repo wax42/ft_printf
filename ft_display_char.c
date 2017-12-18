@@ -18,16 +18,16 @@ int ft_display_char(char *str, p_f parse)
 	{
 		if (ft_strchr("dioux", parse.type))
 		{
-			if (ft_strlen(str) < parse.precision.width)
-				parse.val_ret += ft_display_c(0); // la difference des deux
+			if ((int)ft_strlen(str) < parse.precision.width)
+				parse.val_ret += ft_display_c(parse.precision.width - (int)ft_strlen(str) , 0);
 			parse.val_ret += ft_putstr_len(str, parse.precision.width);
 		}
 		else if (ft_strchr("sS", parse.type))
 			parse.val_ret += ft_putstr_len(str, parse.precision.width);
 		else
-			parse.val_ret += ft_putstr(str);
+			parse.val_ret += ft_putstr_len(str, 100000);
 	}
 	else
-		parse.val_ret += ft_putstr(str);
+		parse.val_ret += ft_putstr_len(str, 1000000);
 	return (parse.val_ret);
 }

@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-int     ft_display_htag(p_f parse, int size)
+int     ft_display_htag(p_f parse)
 {
    if (parse.type == 'o' || parse.type == 'O')
    {
@@ -26,7 +26,7 @@ int     ft_display_htag(p_f parse, int size)
    }
    if (parse.type == 'X')
    {
-	 ft_putchar("0X");
+	 ft_putstr("0X");
 	 return (2);
    }
    return (0);
