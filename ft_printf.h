@@ -6,7 +6,7 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 19:38:40 by vguerand          #+#    #+#             */
-/*   Updated: 2017/12/18 13:45:30 by vguerand         ###   ########.fr       */
+/*   Updated: 2017/12/18 14:03:40 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,16 @@ int ft_display(const char *restrict format, va_list *ap, p_f parse);
 
 int   ft_nbrlen(int n, int base);
 
-unsigned char 	*ft_itoa_long(long long int n);
+char    *ft_itoa_base(int n, int base, int uppercase);
 
-int			ft_atoi_base(char *nb, int base);
+int		ft_atoi_base(char *nb, int base);
 
 void	ft_putwchar(wchar_t c);
 
 int 	ft_display_neg(p_f parse, unsigned char *var_char);
 
 p_f		ft_init_struct(void);
+
+char         *ft_strrev(char *str);
 
 #endif
