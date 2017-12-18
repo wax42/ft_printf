@@ -6,7 +6,7 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 16:36:11 by vguerand          #+#    #+#             */
-/*   Updated: 2017/12/18 13:46:19 by vguerand         ###   ########.fr       */
+/*   Updated: 2017/12/18 13:52:41 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,7 @@ int ft_display(const char *restrict format, va_list *ap, p_f parse)
         return (val_ret);
     if ((val_ret = ft_display_diox_none()))
         return (val_ret);
-
-    if ((val_ret = ft_display_u_hh())) //gere le h et le hh
+	if ((val_ret = ft_display_u_hh())) //gere le h et le hh
         return (val_ret);
     if ((val_ret = ft_display_u_ll())) // gere le l et le ll
         return (val_ret);
@@ -51,6 +50,7 @@ int ft_display(const char *restrict format, va_list *ap, p_f parse)
         return (val_ret);
     if ((val_ret = ft_display_p_none()))
         return (val_ret);
+
 
     if ((type = ft_strchr("DdioOxX", format[parse.i])))
     {
