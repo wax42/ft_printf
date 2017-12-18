@@ -6,7 +6,7 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 19:38:40 by vguerand          #+#    #+#             */
-/*   Updated: 2017/12/18 19:27:49 by vguerand         ###   ########.fr       */
+/*   Updated: 2017/12/18 21:26:42 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,12 @@ int		ft_putstr_len(char const *s, int len);
 p_f		ft_init_struct(void);
 
 char 	*ft_strrev(char *str);
+
+size_t	ft_wstrlen(wchar_t* str);
+
+int ft_display_wchar(wchar_t *str, p_f parse);
+
+size_t ft_putwstr_len(wchar_t *s, size_t len);
 
 int aff_struct(int str, p_f parse);
 
