@@ -130,6 +130,7 @@ int				ft_printf(const char *restrict format, ...)
 				ft_putchar('%');
 			}
 		}
+
 		i++;
 	}
 	return (0);

@@ -43,7 +43,6 @@ int ft_display(const char *restrict format, va_list *ap, p_f parse)
         return (val_ret);
     if ((val_ret = ft_display_p_none()))
         return (val_ret);
-
-*/
+  */
     return (0);
 }

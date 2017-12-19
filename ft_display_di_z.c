@@ -26,7 +26,7 @@ int ft_display_di_z(const char *restrict format, va_list *ap, p_f parse)
 		nbr++;
 		parse.i++;
 	}
-	if (!(parse.type = ft_cchr("dDioOxX", format[parse.i])) || nbr == 0)
+	if (!(parse.type = ft_cchr("dDi", format[parse.i])) || nbr == 0)
 		return (0);
 	if (nbr >= 1)
 	{

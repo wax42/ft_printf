@@ -28,6 +28,7 @@ int aff_struct(int str, p_f parse)
 			ft_putchar('-');
 		else
 			ft_putchar('+');
+		parse.space.width = 1;
 		parse.val_ret++;
 	}
 	else if (parse.space.width == 1)

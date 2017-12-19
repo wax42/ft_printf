@@ -30,7 +30,7 @@ int ft_display_di_hh(const char *restrict format, va_list *ap, p_f parse)
 		return (0);
 	if (nbr > 0)
 	{
-		(parse.type == 'u') ? (sa = va_arg(*ap, unsigned char)) : (sa = va_arg(*ap, int));
+		(parse.type == 'u') ? (sa = va_arg(*ap, int)) : (sa = va_arg(*ap, int));
     (sa < 0) ? (parse.space.width = 1) : (parse.space.width = 0);
     (parse.space.width) ? sa = -sa : sa;
     (parse.type == 'd' || parse.type == 'D') ? str = ft_itoa_base(sa, 10, 0) : str;

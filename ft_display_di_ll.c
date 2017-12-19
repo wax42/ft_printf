@@ -33,8 +33,8 @@ int ft_display_di_ll(const char *restrict format, va_list *ap, p_f parse)
 		sa = va_arg(*ap, long long);
     (sa < 0) ? (parse.space.width = 1) : (parse.space.width = 0);
     (parse.space.width) ? sa = -sa : sa;
-    (parse.type == 'd' || parse.type == 'D') ? str = ft_itoa_long(sa) : str;
-    (parse.type == 'i') ? str = ft_itoa_long(sa) : str;
+    (parse.type == 'd' || parse.type == 'D') ? str = (char *)ft_itoa_long(sa) : str;
+    (parse.type == 'i') ? str = (char *)ft_itoa_long(sa) : str;
 	}
   parse.val_ret += aff_struct((int)ft_strlen(str), parse);
   parse.val_ret += ft_display_char(str, parse);

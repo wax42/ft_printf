@@ -17,5 +17,5 @@ int find_nbr(p_f parse, int size, int str)
 	if (ft_strchr("s,S", parse.type) && parse.precision.val != 0)
 		return (parse.precision.width > str ? str : size - parse.precision.width);
 	else
-		return (size - str);
+		return (size - str - parse.space.width);
 }

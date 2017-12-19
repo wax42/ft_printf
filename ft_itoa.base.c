@@ -21,7 +21,7 @@ char    *ft_itoa_base(int n, int base, int uppercase)
     if (base < 2 || base > 16 || (base != 10 && n < 0))
         return (NULL);
     if (base == 10)
-        return ((char *)ft_itoa_long(n));
+        return (ft_itoa(n));
     length = ft_nbrlen(n, base);
     str = (char*)malloc(sizeof(*str) * (length + 1));
     i = 0;

@@ -11,16 +11,16 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#define TEXT L"BONJOUR 🏋️‍ 🏋️‍♀️ "
-#define TEXT1 "%-8ls"
+#define TEXT 425
+#define TEXT1 "%#X bonjour %-8d"
 
 int main()
 {
-	ft_printf(TEXT1, TEXT);
+	ft_printf(TEXT1, TEXT , TEXT);
 
 	ft_putchar('\n');
 
-	printf(TEXT1, TEXT);
+	printf(TEXT1, TEXT, TEXT);
 
 	//printf("%d", a);
 	//printf("%p", "2");
