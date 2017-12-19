@@ -43,11 +43,13 @@ int 	ft_printf(const char * restrict format, ...);
 
 int 	ft_display(const char *restrict format, va_list *ap, p_f parse);
 
+unsigned char  *ft_itoa_long(long long int n);
+
 int   	ft_nbrlen(int n, int base);
 
 char    ft_cchr(const char *s, int c);
 
-char    *ft_itoa_base(int n, int base, int uppercase);
+char    *ft_itoa_base(long long int n, int base, int uppercase);
 
 int		ft_atoi_base(char *nb, int base);
 
@@ -56,6 +58,16 @@ void	ft_putwchar(wchar_t c);
 int find_nbr(p_f parse, int size, int str);
 
 int ft_display_cs(const char *restrict format, va_list *ap, p_f parse);
+
+int ft_display_di_hh(const char *restrict format, va_list *ap, p_f parse);
+
+int ft_display_di_ll(const char *restrict format, va_list *ap, p_f parse);
+
+int ft_display_di_j(const char *restrict format, va_list *ap, p_f parse);
+
+int ft_display_di_z(const char *restrict format, va_list *ap, p_f parse);
+
+int ft_display_di_none(const char *restrict format, va_list *ap, p_f parse);
 
 int 	ft_display_c(int size, int c);
 
