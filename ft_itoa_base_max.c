@@ -53,7 +53,26 @@ unsigned char            *ft_itoa_long(long long int n)
 
 
 
-int   ft_nbrlen_max(uintmax_t n, int base)
+char         *ft_strrev(char *str)
+{
+    char *tmp;
+    int i;
+    int k;
+
+    i = ft_strlen(str);
+    k = 0;
+    tmp = (char *)malloc(sizeof(char) * i + 1);
+    while(i--)
+    {
+        tmp[k] = str[i];
+        k++;
+    }
+    tmp[k] = '\0';
+    ft_strdel(&str);
+    return (tmp);
+}
+
+int   ft_nbrlen_max(unsigned long long n, unsigned long long base)
 {
     int i;
 
@@ -66,16 +85,19 @@ int   ft_nbrlen_max(uintmax_t n, int base)
     return (i);
 }
 
-char    *ft_itoa_base_max(uintmax_t n, int base, int uppercase)
+char    *ft_itoa_base_max(unsigned long long  n, int ba, int uppercase)
 {
     char    *str;
     int        i;
     int        length;
+    unsigned long long base;
 
-    if (base < 2 || base > 16 || (base != 10))
+    base = (unsigned long long)ba;
+    if (base < 2 || base > 16)
         return (NULL);
     if (base == 10)
         return ((char *)ft_itoa_long(n));
+    length = 0;
     length = ft_nbrlen_max(n, base);
     str = (char*)malloc(sizeof(*str) * (length + 1));
     i = 0;
@@ -91,11 +113,4 @@ char    *ft_itoa_base_max(uintmax_t n, int base, int uppercase)
     }
     str[i] = '\0';
     return (ft_strrev(str));
-}
-
-
-int    main()
-{
-  printf("%s", ft_itoa_base_max(45445424112221, 2, 0));
-  return (0);
 }

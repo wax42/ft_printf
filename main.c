@@ -11,16 +11,16 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#define TEXT 425
-#define TEXT1 "%#X bonjour %-8d"
+#define TEXT (size_t)425457454
+#define TEXT1 "bonjour %-8zd"
 
 int main()
 {
-	ft_printf(TEXT1, TEXT , TEXT);
+	ft_printf(TEXT1, TEXT);
 
 	ft_putchar('\n');
 
-	printf(TEXT1, TEXT, TEXT);
+	printf(TEXT1, TEXT);
 
 	//printf("%d", a);
 	//printf("%p", "2");

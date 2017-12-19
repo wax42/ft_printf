@@ -15,7 +15,8 @@
 int ft_display_di_ll(const char *restrict format, va_list *ap, p_f parse)
 {
 	int nbr;
-  int sa;
+  long long int sa;
+	unsigned long long int la;
 	char *str;
 
   sa = 0;
@@ -26,15 +27,18 @@ int ft_display_di_ll(const char *restrict format, va_list *ap, p_f parse)
 		nbr++;
 		parse.i++;
 	}
-	if (!(parse.type = ft_cchr("dDi", format[parse.i])) || nbr == 0)
+	if (!(parse.type = ft_cchr("dDioOuxX", format[parse.i])) || nbr == 0)
 		return (0);
-	if (nbr >= 1)
+	if (nbr > 0)
 	{
-		sa = va_arg(*ap, long long);
-    (sa < 0) ? (parse.space.width = 1) : (parse.space.width = 0);
-    (parse.space.width) ? sa = -sa : sa;
-    (parse.type == 'd' || parse.type == 'D') ? str = (char *)ft_itoa_long(sa) : str;
-    (parse.type == 'i') ? str = (char *)ft_itoa_long(sa) : str;
+		(parse.type == 'u') ? (la = va_arg(*ap, unsigned long long)) : (sa = va_arg(*ap, long long));
+	  (sa < 0) ? (parse.space.width = 1) : (parse.space.width = 0);
+	  (parse.space.width) ? (la = -sa) : (la = sa);
+	  (parse.type == 'd' || parse.type == 'D') ? str = ft_itoa_base_max(la, 10, 0) : str;
+	  (parse.type == 'i' || parse.type == 'u') ? str = ft_itoa_base_max(la, 10, 0) : str;
+	  (parse.type == 'o' || parse.type == 'O') ? str = ft_itoa_base_max(la, 8, 0) : str;
+	  (parse.type == 'x') ? str = ft_itoa_base_max(la, 16, 0) : str;
+	  (parse.type == 'X') ? str = ft_itoa_base_max(la, 16, 1) : str;
 	}
   parse.val_ret += aff_struct((int)ft_strlen(str), parse);
   parse.val_ret += ft_display_char(str, parse);
