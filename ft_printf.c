@@ -6,7 +6,7 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 19:39:39 by vguerand          #+#    #+#             */
-/*   Updated: 2017/12/19 14:28:28 by vguerand         ###   ########.fr       */
+/*   Updated: 2017/12/19 15:24:27 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ p_f				ft_parse_format(const char *restrict format, int i, va_list *ap)
 	return (parse);
 }
 
-int 			ft_putnchar(char c, int n)
+void			ft_putnchar(char c, int n)
 {
 	int i;
 
@@ -122,7 +122,6 @@ int 			ft_putnchar(char c, int n)
 		ft_putchar(c);
 		i++;
 	}
-	return (n);
 }
 
 int				ft_printf(const char *restrict format, ...)
@@ -144,13 +143,14 @@ int				ft_printf(const char *restrict format, ...)
 				i2 = i;
 				while (format[i2++] == '%')
 					l++;
-				i += ft_putnchar('%', l / 2);
+				i += l - 1;
+				ft_putnchar('%', l / 2);
 			}
 			i++;
 			if (l == 0 || l % 2 != 0)
 				i += ft_display(format, &ap, ft_parse_format(format, i, &ap)) - 2;
 		}
-		if (format[i])
+		while (format[i] && format[i] != '%')
 		{
 			ft_putchar(format[i]);
 			i++;
