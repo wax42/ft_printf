@@ -6,7 +6,7 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 19:38:40 by vguerand          #+#    #+#             */
-/*   Updated: 2017/12/18 21:26:42 by vguerand         ###   ########.fr       */
+/*   Updated: 2017/12/19 12:01:21 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int   	ft_nbrlen(int n, int base);
 
 char    ft_cchr(const char *s, int c);
 
-char    *ft_itoa_base(long long int n, int base, int uppercase);
+char    *ft_itoa_base(int n, int base, int uppercase);
 
 int		ft_atoi_base(char *nb, int base);
 
