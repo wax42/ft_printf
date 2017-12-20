@@ -4,7 +4,7 @@ PATH_OBJ = ./
 PATH_INC = ./libft/includes/
 
 CC = gcc
-CFLAGS = -Ofast -flto -march=native -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 
 HEAD = ft_printf.h
 
