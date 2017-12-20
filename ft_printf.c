@@ -6,7 +6,7 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 19:39:39 by vguerand          #+#    #+#             */
-/*   Updated: 2017/12/18 14:36:55 by vguerand         ###   ########.fr       */
+/*   Updated: 2017/12/20 11:04:19 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ static void		ft_parse_format1(const char *restrict format, p_f *parse,\
 	}
 }
 
-p_f				ft_parse_format(const char *restrict format, int i, va_list *ap)
+p_f	ft_parse_format(const char *restrict format, int i, va_list *ap)
 {
 	p_f parse;
 
@@ -130,7 +130,10 @@ int				ft_printf(const char *restrict format, ...)
 	va_list ap;
 	int l;
 	int i2;
+	int val_ret;
+	p_f parse;
 
+	val_ret = 0;
 	va_start(ap, format);
 	i = 0;
 	while (format[i] != '\0')
@@ -148,7 +151,11 @@ int				ft_printf(const char *restrict format, ...)
 			}
 			i++;
 			if (l == 0 || l % 2 != 0)
-				i += ft_display(format, &ap, ft_parse_format(format, i, &ap)) - 2;
+			{
+				parse = ft_parse_format(format, i , &ap);
+				i = parse.i + 2;
+				val_ret += ft_display(format, &ap, parse);
+			}
 		}
 		while (format[i] && format[i] != '%')
 		{
@@ -156,5 +163,5 @@ int				ft_printf(const char *restrict format, ...)
 			i++;
 		}
 	}
-	return (0);
+	return (val_ret);
 }
