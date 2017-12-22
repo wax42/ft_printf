@@ -6,7 +6,7 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 19:38:40 by vguerand          #+#    #+#             */
-/*   Updated: 2017/12/22 12:21:15 by vguerand         ###   ########.fr       */
+/*   Updated: 2017/12/22 16:14:25 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,13 @@ typedef struct		s_f
 	int 	val_ret;
 }					p_f;
 
+void		ft_print_struct(p_f parse);
+
 int 	ft_printf(const char * restrict format, ...);
 
 int 	ft_display(const char *restrict format, va_list *ap, p_f parse);
+
+int			ft_putnchar(char c, int n);
 
 void	ft_putchar(char c);
 

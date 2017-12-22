@@ -6,7 +6,7 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 15:54:28 by vguerand          #+#    #+#             */
-/*   Updated: 2017/12/18 19:27:39 by vguerand         ###   ########.fr       */
+/*   Updated: 2017/12/22 16:32:39 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int aff_struct(int str, p_f parse)
 {
+	ft_print_struct(parse);
 	if (parse.space.val)
 	{
 		if (parse.space.width == 0)
@@ -22,7 +23,7 @@ int aff_struct(int str, p_f parse)
 			parse.val_ret++;
 		}
 	}
-	if (parse.plus)
+	if (parse.plus == 1)
 	{
 		if (parse.space.width == 1)
 			ft_putchar('-');
@@ -33,8 +34,8 @@ int aff_struct(int str, p_f parse)
 	}
 	else if (parse.space.width == 1)
 	{
-		ft_putchar('-');
-		parse.val_ret++;
+		parse.val_ret += ft_putnchar('-', 1);
+		printf("%d", parse.val_ret);
 	}
 	if (parse.htag)
 		parse.val_ret += ft_display_htag(parse);

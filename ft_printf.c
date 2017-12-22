@@ -6,7 +6,7 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 19:39:39 by vguerand          #+#    #+#             */
-/*   Updated: 2017/12/22 15:44:58 by vguerand         ###   ########.fr       */
+/*   Updated: 2017/12/22 16:34:36 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,19 +136,6 @@ p_f	ft_parse_format(const char *restrict format, int i, va_list *ap)
 			return (parse);
 	}
 	return (parse);
-}
-
-int			ft_putnchar(char c, int n)
-{
-	int i;
-
-	i = 0;
-	while (i < n)
-	{
-		ft_putchar(c);
-		i++;
-	}
-	return (n);
 }
 
 int				ft_printf(const char *restrict format, ...)
