@@ -6,7 +6,7 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 19:39:39 by vguerand          #+#    #+#             */
-/*   Updated: 2017/12/22 09:32:51 by vguerand         ###   ########.fr       */
+/*   Updated: 2017/12/22 11:05:45 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,10 +154,14 @@ int				ft_printf(const char *restrict format, ...)
 			if (l == 0 || l % 2 != 0)
 			{
 				parse = ft_parse_format(format, i , &ap);
-				i = parse.i + 2;
+				i = parse.i + 1;
 				val_ret += ft_display(format, &ap, parse);
 			}
 		}
+		if (i >= (int)ft_strlen((char *)format))
+			break ;
+		while ((ft_strchr("hljzsSpdDioOuUxXcC", format[i])))
+			i++;
 		while (format[i] != '\0' && format[i] != '%')
 		{
 			val_ret += ft_putnchar(format[i], 1);
