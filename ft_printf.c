@@ -6,7 +6,7 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 19:39:39 by vguerand          #+#    #+#             */
-/*   Updated: 2017/12/22 14:51:21 by vguerand         ###   ########.fr       */
+/*   Updated: 2017/12/22 15:44:58 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void		ft_parse_format3(const char *restrict format, p_f *parse,\
 		else
 		{
 			parse->neg.width = ft_atoi(format + parse->i);
-			parse->i += ft_strlen(ft_itoa(parse->zero.width));
+			parse->i += ft_strlen(ft_itoa(parse->neg.width));
 		}
 	}
 	if (format[parse->i] == '*')
@@ -83,7 +83,7 @@ static void		ft_parse_format1(const char *restrict format, p_f *parse,\
 			parse->i++;
 		if (format[parse->i + 1] == '*')
 			parse->precision.width = va_arg(*ap, int);
-		else
+		else if (ft_isdigit(format[parse->i]))
 		{
 			parse->precision.width = ft_atoi(format + parse->i);
 			parse->i += ft_strlen(ft_itoa(parse->zero.width));
@@ -96,15 +96,22 @@ static int	ft_parse_format_pourcent(const char *restrict format, p_f *parse)
 	int i;
 
 	i = parse->i;
+	parse->val_ret = 0;
 	while (!(ft_cchr("%\0", format[i])))
 	{
 		if ((ft_strchr("hljzsSpdDioOuUxXcC", format[i])))
 			return (1);
 		i++;
 	}
+	parse->precision.val = 0;
+	parse->space.val = 0;
+	parse->plus = 0;
+	parse->val_ret += aff_struct(1, *parse);
 	ft_putchar('%');
+	if (parse->neg.val)
+		parse->val_ret += ft_display_c(find_nbr(*parse, parse->neg.width, 1), 32);
 	parse->i = i;
-	parse->val_ret = 1;
+	parse->val_ret += 1;
 	return (0);
 }
 
@@ -116,8 +123,6 @@ p_f	ft_parse_format(const char *restrict format, int i, va_list *ap)
 	parse.i = i;
 	while (!(ft_strchr("hljzsSpdDioOuUxXcC", format[parse.i])))
 	{
-		if (!(ft_parse_format_pourcent(format, &parse)))
-			return (parse);
 		ft_parse_format1(format, &parse, ap);
 		ft_parse_format2(format, &parse, ap);
 		ft_parse_format3(format, &parse, ap);
@@ -127,6 +132,8 @@ p_f	ft_parse_format(const char *restrict format, int i, va_list *ap)
 			parse.width.width = ft_atoi(format + parse.i);
 			parse.i += ft_strlen(ft_itoa(parse.width.width));
 		}
+		if (!(ft_parse_format_pourcent(format, &parse)))
+			return (parse);
 	}
 	return (parse);
 }
