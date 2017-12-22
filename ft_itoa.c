@@ -5,48 +5,62 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/12 12:22:24 by vguerand          #+#    #+#             */
-/*   Updated: 2017/12/12 12:22:53 by vguerand         ###   ########.fr       */
+/*   Created: 2017/11/10 15:15:50 by vguerand          #+#    #+#             */
+/*   Updated: 2017/12/22 12:19:56 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-unsigned char        *ft_str_itoa(long long int len, long long int n, int neg)
+static int	compteur_size(long nbr)
 {
-    unsigned char *str;
+	int size;
 
-    str = (unsigned char *)malloc(sizeof(char) * len);
-    if (str == NULL)
-        return (NULL);
-    str[--len] = '\0';
-    while (len--)
-    {
-        str[len] = n % 10 + '0';
-        n = n / 10;
-    }
-    if (neg)
-        str[0] = '-';
-    return (str);
+	size = 0;
+	while (nbr >= 10)
+	{
+		nbr = nbr / 10;
+		size++;
+	}
+	return (size + 1);
 }
 
-
-unsigned char            *ft_itoa_long(long long int n)
+static char	remplissage(int indice, long nbr)
 {
-    long long int    i;
-    long long int    l;
-    int        neg;
+	int i;
 
-    i = n;
-    l = 2;
-    neg = 0;
-    if (n < 0)
-    {
-        n = -n;
-        neg = 1;
-    }
-    while (i /= 10)
-        l++;
-    l = l + neg;
-    return (ft_str_itoa(l, n, neg));
+	i = 0;
+	while (i < indice)
+	{
+		nbr = nbr / 10;
+		i++;
+	}
+	return (nbr % 10 + '0');
+}
+
+char		*ft_itoa(int n)
+{
+	int		neg;
+	int		size;
+	int		indice;
+	char	*str;
+	long	nbr;
+
+	nbr = (long)n;
+	neg = 0;
+	indice = 0;
+	if (nbr < 0)
+	{
+		nbr = -nbr;
+		neg = 1;
+	}
+	size = compteur_size(nbr);
+	if (!(str = (char *)malloc(sizeof(char) * size + 1)))
+		return (NULL);
+	while (size--)
+	{
+		str[size] = remplissage(indice, nbr);
+		indice += 1;
+	}
+	return (str);
 }

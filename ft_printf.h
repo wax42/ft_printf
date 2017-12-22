@@ -6,14 +6,16 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 19:38:40 by vguerand          #+#    #+#             */
-/*   Updated: 2017/12/18 21:26:42 by vguerand         ###   ########.fr       */
+/*   Updated: 2017/12/22 12:21:15 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef _FT_PRINTF_H
 # define _FT_PRINTF_H
 # include <stdarg.h>
-# include "libft/libft.h"
+# include <stdlib.h>
+# include <unistd.h>
+//# include "libft/libft.h"
 # include <stdio.h>  //// nepas oublier de virer ce fdp
 
 typedef struct 		s_l
@@ -42,6 +44,34 @@ typedef struct		s_f
 int 	ft_printf(const char * restrict format, ...);
 
 int 	ft_display(const char *restrict format, va_list *ap, p_f parse);
+
+void	ft_putchar(char c);
+
+void	ft_strdel(char **as);
+
+char	*ft_strdup(const char *s1);
+
+char	*ft_strcpy(char *dst, const char *src);
+
+size_t		ft_strlen(const char *s);
+
+char	*ft_strchr(const char *s, int c);
+
+int		ft_atoi(const char *str);
+
+int		ft_isdigit(int c);
+
+char		*ft_itoa(int n);
+
+char		**ft_strsplit(char const *s, char c);
+
+int		ft_nb_ltr(char *str, int mot, char separateur);
+
+int	ft_nb_mots(char *str, char separateur);
+
+int		ft_index_mot(char *str, int mot, char separateur);
+
+void	ft_memdel(void **ap);
 
 unsigned char  *ft_itoa_long(long long int n);
 

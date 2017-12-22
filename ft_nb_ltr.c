@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_display_htag.c                                  :+:      :+:    :+:   */
+/*   ft_nb_ltr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/18 15:55:25 by vguerand          #+#    #+#             */
-/*   Updated: 2017/12/22 12:05:32 by vguerand         ###   ########.fr       */
+/*   Created: 2017/11/15 08:34:09 by vguerand          #+#    #+#             */
+/*   Updated: 2017/12/22 12:11:10 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int     ft_display_htag(p_f parse)
+int	ft_nb_ltr(char *str, int mot, char separateur)
 {
-   if (parse.type == 'o' || parse.type == 'O')
-   {
-	 ft_putchar('0');
-	 return (1);
-   }
-   if (parse.type == 'x')
-   {
-	 ft_putstr_len("0x", 2);
-	 return (2);
-   }
-   if (parse.type == 'X')
-   {
-	 ft_putstr_len("0X", 2);
-	 return (2);
-   }
-   return (0);
+	int		index;
+	int		nb_lettres;
+
+	index = ft_index_mot(str, mot, separateur);
+	nb_lettres = 0;
+	while (str[index] != separateur && str[index])
+	{
+		nb_lettres++;
+		index++;
+	}
+	return (nb_lettres);
 }

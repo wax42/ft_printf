@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_display_htag.c                                  :+:      :+:    :+:   */
+/*   ft_nb_mots.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/18 15:55:25 by vguerand          #+#    #+#             */
-/*   Updated: 2017/12/22 12:05:32 by vguerand         ###   ########.fr       */
+/*   Created: 2017/11/15 08:35:23 by vguerand          #+#    #+#             */
+/*   Updated: 2017/12/22 12:11:20 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int     ft_display_htag(p_f parse)
+int	ft_nb_mots(char *str, char separateur)
 {
-   if (parse.type == 'o' || parse.type == 'O')
-   {
-	 ft_putchar('0');
-	 return (1);
-   }
-   if (parse.type == 'x')
-   {
-	 ft_putstr_len("0x", 2);
-	 return (2);
-   }
-   if (parse.type == 'X')
-   {
-	 ft_putstr_len("0X", 2);
-	 return (2);
-   }
-   return (0);
+	int		i;
+	int		nb_mots;
+
+	i = 0;
+	nb_mots = 0;
+	while (str[i])
+	{
+		if (str[i] == separateur)
+			i++;
+		else
+		{
+			while (str[i] != separateur && str[i])
+				i++;
+			nb_mots++;
+		}
+	}
+	return (nb_mots);
 }

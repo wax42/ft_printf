@@ -8,7 +8,8 @@ CFLAGS = -Wall -Wextra -Werror
 
 HEAD = ft_printf.h
 
-SRC = ft_putwstr_len.c ft_wstr_len.c ft_itoa_base_max.c ft_display_wchar.c ft_display_di_hh.c ft_display_di_j.c ft_display_di_z.c ft_display_di_none.c ft_display_di_ll.c ft_find_nbr.c ft_putstr_len.c ft_display_char.c ft_display_htag.c ft_aff_struct.c ft_display_c.c ft_cchr.c ft_display_cs.c ft_itoa_base.c ft_atoi_base.c ft_putwchar.c ft_nbrlen.c ft_strrev.c ft_printf.c ft_display.c ft_itoa.c ft_init_struct.c
+SRC = ft_isdigit.c ft_putchar.c ft_strcpy.c ft_strdup.c ft_itoa.c ft_strdup.c ft_memdel.c ft_strsplit.c ft_nb_ltr.c ft_nb_mots.c ft_index_mot.c ft_strchr.c ft_atoi.c ft_strlen.c ft_strdel.c\
+ft_putwstr_len.c ft_wstr_len.c ft_itoa_base_max.c ft_display_wchar.c ft_display_di_hh.c ft_display_di_j.c ft_display_di_z.c ft_display_di_none.c ft_display_di_ll.c ft_find_nbr.c ft_putstr_len.c ft_display_char.c ft_display_htag.c ft_aff_struct.c ft_display_c.c ft_cchr.c ft_display_cs.c ft_itoa_base.c ft_atoi_base.c ft_putwchar.c ft_nbrlen.c ft_strrev.c ft_printf.c ft_display.c ft_itoa.c ft_init_struct.c
 
 OBJ = $(patsubst %.c,%.o,$(addprefix $(PATH_SRC), $(SRC)))
 
@@ -18,18 +19,15 @@ OBJ_LIBFT = ./libft/ft_putchar.o ft_isdigit ft_atoi ft_isdigit ft_itoa ft_putstr
 all: $(NAME)
 
 $(NAME): $(OBJ) $(HEAD)
-	make -C libft/
 	$(CC) $(CFLAGS) -I $(PATH_INC) -c $(SRC)
-	ar rcs $(NAME) $(OBJ) $(OBJ)
+	ar rcs $(NAME) $(OBJ)
 
 .PHONY: clean fclean all re
 
 clean:
-	make -C libft/ clean
 	/bin/rm -f $(OBJ) $(OBJ_LIBFT)
 
 fclean: clean
-	make -C libft/ fclean
 	/bin/rm -f $(NAME)
 
 re: fclean all
