@@ -6,7 +6,7 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 16:26:06 by vguerand          #+#    #+#             */
-/*   Updated: 2017/12/18 16:51:19 by vguerand         ###   ########.fr       */
+/*   Updated: 2017/12/22 09:25:26 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ int ft_display_char(char *str, p_f parse)
 		else if (ft_strchr("sS", parse.type))
 			parse.val_ret += ft_putstr_len(str, parse.precision.width);
 		else
-			parse.val_ret += ft_putstr_len(str, 100000);
+			parse.val_ret += ft_putstr_len(str, (int)ft_strlen(str));
 	}
 	else
-		parse.val_ret += ft_putstr_len(str, 1000000);
+		parse.val_ret += ft_putstr_len(str, (int)ft_strlen(str));
 	return (parse.val_ret);
 }

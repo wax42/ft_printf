@@ -6,7 +6,7 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 19:39:39 by vguerand          #+#    #+#             */
-/*   Updated: 2017/12/20 11:04:19 by vguerand         ###   ########.fr       */
+/*   Updated: 2017/12/22 09:32:51 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ p_f	ft_parse_format(const char *restrict format, int i, va_list *ap)
 	return (parse);
 }
 
-void			ft_putnchar(char c, int n)
+int			ft_putnchar(char c, int n)
 {
 	int i;
 
@@ -122,6 +122,7 @@ void			ft_putnchar(char c, int n)
 		ft_putchar(c);
 		i++;
 	}
+	return (n);
 }
 
 int				ft_printf(const char *restrict format, ...)
@@ -147,7 +148,7 @@ int				ft_printf(const char *restrict format, ...)
 				while (format[i2++] == '%')
 					l++;
 				i += l - 1;
-				ft_putnchar('%', l / 2);
+				val_ret += ft_putnchar('%', l / 2);
 			}
 			i++;
 			if (l == 0 || l % 2 != 0)
@@ -157,9 +158,9 @@ int				ft_printf(const char *restrict format, ...)
 				val_ret += ft_display(format, &ap, parse);
 			}
 		}
-		while (format[i] && format[i] != '%')
+		while (format[i] != '\0' && format[i] != '%')
 		{
-			ft_putchar(format[i]);
+			val_ret += ft_putnchar(format[i], 1);
 			i++;
 		}
 	}
