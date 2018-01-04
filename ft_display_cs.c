@@ -6,7 +6,7 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 14:19:18 by vguerand          #+#    #+#             */
-/*   Updated: 2017/12/25 20:43:37 by vguerand         ###   ########.fr       */
+/*   Updated: 2018/01/04 15:48:02 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ int ft_display_cs(const char *restrict format, va_list *ap, p_f parse)
 		parse.val_ret = aff_struct((int)ft_strlen(str), parse);
 		if (str != NULL)
 			parse.val_ret = ft_display_char(str, parse);
+		else
+			parse.val_ret = ft_putstr_len("(null)", 6);
 		if (parse.neg.val)
 			parse.val_ret += ft_display_c(find_nbr(parse, parse.neg.width, (int)ft_strlen(str)), 32);
 	}

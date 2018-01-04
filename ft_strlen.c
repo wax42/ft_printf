@@ -6,7 +6,7 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 16:13:26 by vguerand          #+#    #+#             */
-/*   Updated: 2017/12/22 12:03:07 by vguerand         ###   ########.fr       */
+/*   Updated: 2018/01/04 15:46:30 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@ size_t		ft_strlen(const char *s)
 	int i;
 
 	i = 0;
-	while (*s++ != '\0')
-		i++;
+	if (s != NULL)
+	{
+		while (*s++ != '\0')
+			i++;
+	}
 	return (i);
 }
