@@ -6,7 +6,7 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 19:38:40 by vguerand          #+#    #+#             */
-/*   Updated: 2017/12/22 16:14:25 by vguerand         ###   ########.fr       */
+/*   Updated: 2018/01/04 17:17:25 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void	ft_putwchar(wchar_t c);
 
 int find_nbr(p_f parse, int size, int str);
 
-int ft_display_cs(const char *restrict format, va_list *ap, p_f parse);
+int ft_display_s(const char *restrict format, va_list *ap, p_f parse);
 
 int ft_display_di_hh(const char *restrict format, va_list *ap, p_f parse);
 
@@ -104,6 +104,8 @@ int ft_display_di_j(const char *restrict format, va_list *ap, p_f parse);
 int ft_display_di_z(const char *restrict format, va_list *ap, p_f parse);
 
 int ft_display_di_none(const char *restrict format, va_list *ap, p_f parse);
+
+int ft_display_little_c(const char *restrict format, va_list *ap, p_f parse);
 
 int 	ft_display_c(int size, int c);
 

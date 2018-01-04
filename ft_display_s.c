@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_display_cs.c                                    :+:      :+:    :+:   */
+/*   ft_display_s.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 14:19:18 by vguerand          #+#    #+#             */
-/*   Updated: 2018/01/04 16:47:53 by vguerand         ###   ########.fr       */
+/*   Updated: 2018/01/04 17:11:15 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ size_t	ft_wstr_len(wchar_t* str)
 }
 
 
-int ft_display_cs(const char *restrict format, va_list *ap, p_f parse)
+int ft_display_s(const char *restrict format, va_list *ap, p_f parse)
 {
 	int nbr;
 	char *str;
@@ -38,7 +38,7 @@ int ft_display_cs(const char *restrict format, va_list *ap, p_f parse)
 		nbr++;
 		parse.i++;
 	}
-	if (!(parse.type = ft_cchr("sScC", format[parse.i])))
+	if (!(parse.type = ft_cchr("s", format[parse.i])))
 		return (0);
 	if (nbr == 0)
 	{
