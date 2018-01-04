@@ -6,7 +6,7 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 19:39:39 by vguerand          #+#    #+#             */
-/*   Updated: 2017/12/22 16:34:36 by vguerand         ###   ########.fr       */
+/*   Updated: 2018/01/04 15:58:18 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ static void		ft_parse_format1(const char *restrict format, p_f *parse,\
 		else if (ft_isdigit(format[parse->i]))
 		{
 			parse->precision.width = ft_atoi(format + parse->i);
-			parse->i += ft_strlen(ft_itoa(parse->zero.width));
+			parse->i += ft_strlen(ft_itoa(parse->precision.width));
 		}
 	}
 }
