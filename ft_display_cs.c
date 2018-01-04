@@ -6,7 +6,7 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 14:19:18 by vguerand          #+#    #+#             */
-/*   Updated: 2017/12/22 10:56:09 by vguerand         ###   ########.fr       */
+/*   Updated: 2017/12/25 20:43:37 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,16 +43,17 @@ int ft_display_cs(const char *restrict format, va_list *ap, p_f parse)
 	if (nbr == 0)
 	{
 		str = va_arg(*ap, char *);
-		parse.val_ret += aff_struct((int)ft_strlen(str), parse);
-		parse.val_ret += ft_display_char(str, parse);
+		parse.val_ret = aff_struct((int)ft_strlen(str), parse);
+		if (str != NULL)
+			parse.val_ret = ft_display_char(str, parse);
 		if (parse.neg.val)
 			parse.val_ret += ft_display_c(find_nbr(parse, parse.neg.width, (int)ft_strlen(str)), 32);
 	}
 	else if (nbr >= 1)
 	{
 		str1 = va_arg(*ap, wchar_t *);
-		parse.val_ret += aff_struct((int)ft_wstrlen(str1), parse);
-		parse.val_ret += ft_display_wchar(str1, parse);
+		parse.val_ret = aff_struct((int)ft_wstrlen(str1), parse);
+		parse.val_ret = ft_display_wchar(str1, parse);
 		if (parse.neg.val)
 			parse.val_ret += ft_display_c(find_nbr(parse, parse.neg.width, (int)ft_wstrlen(str1)), 32);
 	}

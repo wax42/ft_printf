@@ -8,7 +8,7 @@ CFLAGS = -Wall -Wextra -Werror
 
 HEAD = ft_printf.h
 
-SRC = ft_isdigit.c ft_putchar.c ft_strcpy.c ft_strdup.c ft_itoa.c ft_strdup.c ft_memdel.c ft_strsplit.c ft_nb_ltr.c ft_nb_mots.c ft_index_mot.c ft_strchr.c ft_atoi.c ft_strlen.c ft_strdel.c\
+SRC = ft_print_struct.c ft_putnchar.c ft_isdigit.c ft_putchar.c ft_strcpy.c ft_strdup.c ft_itoa.c ft_strdup.c ft_memdel.c ft_strsplit.c ft_nb_ltr.c ft_nb_mots.c ft_index_mot.c ft_strchr.c ft_atoi.c ft_strlen.c ft_strdel.c\
 ft_putwstr_len.c ft_wstr_len.c ft_itoa_base_max.c ft_display_wchar.c ft_display_di_hh.c ft_display_di_j.c ft_display_di_z.c ft_display_di_none.c ft_display_di_ll.c ft_find_nbr.c ft_putstr_len.c ft_display_char.c ft_display_htag.c ft_aff_struct.c ft_display_c.c ft_cchr.c ft_display_cs.c ft_itoa_base.c ft_atoi_base.c ft_putwchar.c ft_nbrlen.c ft_strrev.c ft_printf.c ft_display.c ft_itoa.c ft_init_struct.c
 
 OBJ = $(patsubst %.c,%.o,$(addprefix $(PATH_SRC), $(SRC)))
