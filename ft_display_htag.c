@@ -14,12 +14,17 @@
 
 int     ft_display_htag(p_f parse)
 {
-   if (parse.type == 'o' || parse.type == 'O')
+   if ((parse.type == 'o' || parse.type == 'O') && (!(parse.neutral)))
    {
 	 ft_putchar('0');
 	 return (1);
    }
    if (parse.type == 'x')
+   {
+	 ft_putstr_len("0x", 2);
+	 return (2);
+   }
+   if (parse.type == 'p')
    {
 	 ft_putstr_len("0x", 2);
 	 return (2);

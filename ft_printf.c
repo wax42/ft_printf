@@ -20,6 +20,8 @@ static void		ft_parse_format3(const char *restrict format, p_f *parse,\
 		parse->neg.val = 1;
 		while (format[parse->i] == '-')
 			parse->i++;
+		if (format[parse->i] == 'd')
+			parse->i--;
 		if (format[parse->i + 1] == '*')
 			parse->neg.width = va_arg(*ap, int);
 		else
@@ -51,6 +53,8 @@ static void		ft_parse_format2(const char *restrict format, p_f *parse,\
 		parse->zero.val = 1;
 		while (format[parse->i] == '0')
 			parse->i++;
+		if (format[parse->i] == 'd')
+			parse->i--;
 		if (format[parse->i + 1] == '*')
 			parse->zero.width = va_arg(*ap, int);
 		else
@@ -150,7 +154,7 @@ int				ft_printf(const char *restrict format, ...)
 	i = 0;
 	while (format[i] != '\0')
 	{
-		while (format[i] != '\0' && format[i] != '%')
+		while (format[i] != '\0' && format[i] != '%' && format[i])
 		{
 			val_ret += ft_putnchar(format[i], 1);
 			i++;
@@ -161,11 +165,13 @@ int				ft_printf(const char *restrict format, ...)
 			val_ret += parse.val_ret;
 			i = parse.i + 1;
 			val_ret += ft_display(format, &ap, parse);
+
 		}
 		if (i >= (int)ft_strlen((char *)format))
 			break ;
-		//while ((ft_strchr("hljzsSpdDioOuUxXcC", format[i])))
-			//i++;
+
+		while((ft_strchr("hljzsSpdDioOuUxXcC", format[i])) && i < (int)ft_strlen((char *)format))
+				i++;
 	}
 	return (val_ret);
 }

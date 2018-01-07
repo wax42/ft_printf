@@ -16,9 +16,20 @@ int ft_display(const char *restrict format, va_list *ap, p_f parse)
 {
     if ((parse.val_ret = ft_display_s(format, ap, parse)))
         return (parse.val_ret);
-	if ((parse.val_ret = ft_display_little_c(format, ap, parse)))
-		return (parse.val_ret);
+
+	  if ((parse.val_ret = ft_display_little_c(format, ap, parse)))
+		    return (parse.val_ret);
+
+    if ((parse.val_ret = ft_display_capital_c(format, ap, parse)))
+        return (parse.val_ret);
+
+    if ((parse.val_ret = ft_display_di_h(format, ap, parse)))
+        return (parse.val_ret);
+
     if ((parse.val_ret = ft_display_di_hh(format, ap, parse)))
+        return (parse.val_ret);
+
+    if ((parse.val_ret = ft_display_di_l(format, ap, parse)))
         return (parse.val_ret);
 
     if ((parse.val_ret = ft_display_di_ll(format, ap, parse)))
@@ -28,6 +39,9 @@ int ft_display(const char *restrict format, va_list *ap, p_f parse)
         return (parse.val_ret);
 
     if ((parse.val_ret = ft_display_di_z(format, ap, parse)))
+        return (parse.val_ret);
+
+    if ((parse.val_ret = ft_display_p(format, ap, parse)))
         return (parse.val_ret);
 
     if ((parse.val_ret = ft_display_di_none(format, ap, parse)))

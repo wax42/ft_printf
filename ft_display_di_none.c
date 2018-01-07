@@ -23,13 +23,26 @@ int ft_display_di_none(const char *restrict format, va_list *ap, p_f parse)
   str = NULL;
 	if (!(parse.type = ft_cchr("dDioOuxX", format[parse.i])))
 		return (0);
-  (parse.type == 'u') ? (sa = va_arg(*ap, unsigned int)) : (sa = va_arg(*ap, int));
+  (parse.type == 'u' || parse.type == 'U') ? (sa = va_arg(*ap, unsigned int)) : (sa = va_arg(*ap, int));
   (sa < 0) ? (parse.space.width = 1) : (parse.space.width = 0);
   (parse.space.width) ? sa = -sa : sa;
   (parse.type == 'u') ? str = ft_itoa_base(sa, 10, 0) : str;
   (parse.type == 'd' || parse.type == 'D') ? str = ft_itoa_base(sa, 10, 0) : str;
   (parse.type == 'i') ? str = ft_itoa_base(sa, 10, 0) : str;
-  (parse.type == 'o' || parse.type == 'O') ? str = ft_itoa_base(sa, 8, 0) : str;
+	((parse.type == 'o' || parse.type == 'O') && !(parse.space.width)) ? str = ft_itoa_base(sa, 8, 0) : str;
+	if (sa == 0)
+		parse.neutral = 1;
+	if ((parse.type == 'o' || parse.type == 'O') && parse.space.width)
+	{
+	   str = ft_itoa_base_max(4294967296 - sa,8,0);
+		 parse.space.width = 0;
+	}
+	if ((parse.type == 'u' || parse.type == 'U') && parse.space.width)
+	{
+		 str = ft_itoa_base_max(4294967296 - sa,10,0);
+		 parse.space.width = 0;
+	}
+
   (parse.type == 'x') ? str = ft_itoa_base(sa, 16, 0) : str;
   (parse.type == 'X') ? str = ft_itoa_base(sa, 16, 1) : str;
   parse.val_ret += aff_struct((int)ft_strlen(str), parse);

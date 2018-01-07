@@ -19,13 +19,21 @@ int ft_display_char(char *str, p_f parse)
 		if (ft_strchr("dioux", parse.type))
 		{
 			if ((int)ft_strlen(str) < parse.precision.width)
-				parse.val_ret += ft_display_c(parse.precision.width - (int)ft_strlen(str) , 0);
-			parse.val_ret += ft_putstr_len(str, parse.precision.width);
+			{
+				parse.val_ret += ft_display_c(parse.precision.width - (int)ft_strlen(str) , 48);
+				parse.val_ret += ft_putstr_len(str, parse.precision.width);
+			}
+			else if (parse.precision.width <= (int)ft_strlen(str))
+				parse.val_ret += ft_putstr_len(str, (int)ft_strlen(str));
 		}
 		else if (ft_strchr("sS", parse.type))
 			parse.val_ret += ft_putstr_len(str, parse.precision.width);
 		else
 			parse.val_ret += ft_putstr_len(str, (int)ft_strlen(str));
+	}
+	else if (ft_strchr("p", parse.type))
+	{
+		parse.val_ret += ft_putstr_len(str, (int)ft_strlen(str));
 	}
 	else
 		parse.val_ret += ft_putstr_len(str, (int)ft_strlen(str));

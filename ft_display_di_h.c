@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-int ft_display_di_hh(const char *restrict format, va_list *ap, p_f parse)
+int ft_display_di_h(const char *restrict format, va_list *ap, p_f parse)
 {
 	int nbr;
 	int sa;
@@ -26,18 +26,17 @@ int ft_display_di_hh(const char *restrict format, va_list *ap, p_f parse)
 		nbr++;
 		parse.i++;
 	}
-	if (!(parse.type = ft_cchr("dioOu", format[parse.i])) || nbr == 0)
+	if (!(parse.type = ft_cchr("diuoO", format[parse.i])) || nbr == 0)
 		return (0);
-	if (nbr == 2)
+	if (nbr == 1)
 	{
-		(parse.type == 'u') ? sa = (unsigned char)va_arg(*ap, int) : sa;
-		(parse.type == 'd' || parse.type == 'i') ? sa = (char)va_arg(*ap, int) : sa;
-		(parse.type == 'o' || parse.type == 'O') ? sa = (unsigned char)va_arg(*ap, int) : sa;
-    (sa < 0) ? parse.space.width = 1 : (parse.space.width = 0);
+		(parse.type == 'u') ? sa = (unsigned short)va_arg(*ap, int) : sa;
+		(parse.type == 'o' || parse.type == 'O') ? sa = (unsigned short)va_arg(*ap, int) : sa;
+		(parse.type == 'd' || parse.type == 'i') ? sa = (short)va_arg(*ap, int) : sa;
+    (sa < 0) ? (parse.space.width = 1) : (parse.space.width = 0);
     (parse.space.width) ? sa = -sa : sa;
     (parse.type == 'd' || parse.type == 'i' || parse.type == 'u') ? str = ft_itoa_base(sa, 10, 0) : str;
 		(parse.type == 'o' || parse.type == 'O') ? str = ft_itoa_base(sa, 8, 0) : str;
-
 	}
 	parse.val_ret = aff_struct((int)ft_strlen(str), parse);
 	parse.val_ret = ft_display_char(str, parse);

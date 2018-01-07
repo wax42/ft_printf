@@ -27,7 +27,7 @@ typedef struct 		s_l
 
 typedef struct		s_f
 {
-
+	int neutral;
 	char   		type;
 	char 			flag;
 	unsigned int htag;
@@ -95,7 +95,11 @@ int find_nbr(p_f parse, int size, int str);
 
 int ft_display_s(const char *restrict format, va_list *ap, p_f parse);
 
+int ft_display_di_h(const char *restrict format, va_list *ap, p_f parse);
+
 int ft_display_di_hh(const char *restrict format, va_list *ap, p_f parse);
+
+int ft_display_di_l(const char *restrict format, va_list *ap, p_f parse);
 
 int ft_display_di_ll(const char *restrict format, va_list *ap, p_f parse);
 
@@ -103,9 +107,13 @@ int ft_display_di_j(const char *restrict format, va_list *ap, p_f parse);
 
 int ft_display_di_z(const char *restrict format, va_list *ap, p_f parse);
 
+int ft_display_p(const char *restrict format, va_list *ap, p_f parse);
+
 int ft_display_di_none(const char *restrict format, va_list *ap, p_f parse);
 
 int ft_display_little_c(const char *restrict format, va_list *ap, p_f parse);
+
+int ft_display_capital_c(const char *restrict format, va_list *ap, p_f parse);
 
 int 	ft_display_c(int size, int c);
 

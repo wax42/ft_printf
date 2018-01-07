@@ -12,16 +12,14 @@
 
 #include "ft_printf.h"
 #define TEXT 'U'
-#define  T "hello ca%----4c %1c va %10c%-c ??", '\0', '\n', 2, 0
-#define TEXT1 "%4c" // essaye avec un l
+#define  T "%20.ld et %.4hhi !", 0x11ffaa147, (signed char)-8
+#define TEXT1 "%ld", 0xff11ff11ff88
 
 int main()
 {
+	void *ptr;
+	ptr = "eed";
 	printf("\t%d\n", ft_printf(T));
 	printf("\t%d\n", printf(T));
-
-
-	//printf("%d", a);
-	//printf("%p", "2");
 	return (0);
 }

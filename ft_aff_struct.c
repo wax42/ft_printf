@@ -22,6 +22,8 @@ int aff_struct(int str, p_f parse)
 			parse.val_ret++;
 		}
 	}
+	if (parse.width.val == 1 || (parse.zero.val == 1 && parse.neg.val == 0 && parse.precision.val == 0))
+		parse.val_ret += ft_display_c(find_nbr(parse, parse.width.width, str), 32);
 	if (parse.plus == 1)
 	{
 		if (parse.space.width == 1)
@@ -33,11 +35,13 @@ int aff_struct(int str, p_f parse)
 	}
 	else if (parse.space.width == 1)
 		parse.val_ret += ft_putnchar('-', 1);
+
 	if (parse.htag)
+		parse.val_ret += ft_display_htag(parse);
+	if (parse.type == 'p')
 		parse.val_ret += ft_display_htag(parse);
 	if (parse.zero.val == 1 && parse.neg.val == 0 && parse.precision.val == 0)
 		parse.val_ret += ft_display_c(find_nbr(parse, parse.zero.width, str), '0');
-	if (parse.width.val == 1 || (parse.zero.val == 1 && parse.neg.val == 0 && parse.precision.val == 0))
-		parse.val_ret += ft_display_c(find_nbr(parse, parse.width.width, str), 32);
+
 	return (parse.val_ret);
 }

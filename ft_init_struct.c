@@ -16,6 +16,7 @@ p_f		ft_init_struct(void)
 {
 	p_f parse;
 
+	parse.neutral = 0;
 	parse.htag = 0;
 	parse.precision.val = 0;
 	parse.precision.width = 0;

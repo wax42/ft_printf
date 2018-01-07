@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_display_diox_hh.c                                       :+:      :+:  */
+/*   ft_display_di_l.c                                    :+:          :+:    */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-int ft_display_di_ll(const char *restrict format, va_list *ap, p_f parse)
+int ft_display_di_l(const char *restrict format, va_list *ap, p_f parse)
 {
 	int nbr;
   long long int sa;
@@ -27,15 +27,18 @@ int ft_display_di_ll(const char *restrict format, va_list *ap, p_f parse)
 		nbr++;
 		parse.i++;
 	}
-	if (!(parse.type = ft_cchr("diu", format[parse.i])) || nbr == 0)
+	if (!(parse.type = ft_cchr("diuoO", format[parse.i])) || nbr == 0)
 		return (0);
-	if (nbr > 1)
+
+	if (nbr == 1)
 	{
-		(parse.type == 'd' || parse.type == 'i') ? sa = va_arg(*ap, long long int) : sa;
-		(parse.type == 'u') ? sa = va_arg(*ap, unsigned long long) : sa;
+		(parse.type == 'u') ? sa = (unsigned long)va_arg(*ap, int) : sa;
+		(parse.type == 'o' || parse.type == 'O') ? sa = (unsigned long)va_arg(*ap, int) : sa;
+		(parse.type == 'd' || parse.type == 'i') ? sa = va_arg(*ap, long int) : sa;
 	  (sa < 0) ? (parse.space.width = 1) : (parse.space.width = 0);
 	  (parse.space.width) ? (la = -sa) : (la = sa);
-	  (parse.type == 'd' || parse.type == 'i' || parse.type == 'u') ? str = ft_itoa_base_max(la, 10, 0) : str;
+		(parse.type == 'd' || parse.type == 'i' || parse.type == 'u') ? str = ft_itoa_base_max(sa, 10, 0) : str;
+		(parse.type == 'o' || parse.type == 'O') ? str = ft_itoa_base_max(sa, 8, 0) : str;
 	}
   parse.val_ret += aff_struct((int)ft_strlen(str), parse);
   parse.val_ret += ft_display_char(str, parse);
