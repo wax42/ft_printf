@@ -6,7 +6,7 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 16:36:11 by vguerand          #+#    #+#             */
-/*   Updated: 2018/01/18 23:10:23 by vguerand         ###   ########.fr       */
+/*   Updated: 2018/01/18 23:12:24 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,14 @@ void		ft_strwdel(wchar_t **as)
 	}
 }
 
-static void	ft_display_capital_s1(p_f parse)
+static int	ft_display_capital_s1(p_f parse)
 {
 	parse.val_ret = aff_struct((int)ft_strlen("(null)"), &parse);
 	parse.val_ret = ft_display_char("(null)", parse);
 	if (parse.neg.val && parse.precision.width <= parse.neg.width)
 		parse.val_ret += ft_display_c(find_nbr(parse, parse.neg.width, \
 			(int)ft_strlen("(null)")), 32);
+	return (parse.val_ret);
 }
 
 int			ft_display_capital_s(va_list *ap, p_f parse)
@@ -51,6 +52,6 @@ int			ft_display_capital_s(va_list *ap, p_f parse)
 				(int)ft_wstrlen_byte(str1, parse.precision.width)), 32);
 	}
 	else
-		ft_display_capital_s1(parse);
+		parse.val_ret = ft_display_capital_s1(parse);
 	return (parse.val_ret);
 }
