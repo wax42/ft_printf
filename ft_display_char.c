@@ -6,7 +6,7 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 16:26:06 by vguerand          #+#    #+#             */
-/*   Updated: 2018/01/18 21:38:00 by mbarthe          ###   ########.fr       */
+/*   Updated: 2018/01/18 23:14:20 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,16 @@ int		ft_display_char(char *str, p_f parse)
 	{
 		if (ft_strchr("DdioOuUxXp", parse.type))
 		{
-			if ((int)ft_strlen(str) < parse.precision.width && parse.precision.width)
+			if ((int)ft_strlen(str) < parse.precision.width && \
+			parse.precision.width)
 			{
-				parse.val_ret += ft_display_c(parse.precision.width - (int)ft_strlen(str) - ((parse.type == 'o' || parse.type  == 'O') ? (parse.htag.width) : 0), 48);
+				parse.val_ret += ft_display_c(parse.precision.width - \
+					(int)ft_strlen(str) - ((parse.type == 'o' || parse.type  \
+					== 'O') ? (parse.htag.width) : 0), 48);
 				parse.val_ret += ft_putstr_len(str, parse.precision.width);
 			}
-			else if (parse.precision.width <= (int)ft_strlen(str) && !parse.neutral)
+			else if (parse.precision.width <= (int)ft_strlen(str) && \
+			!parse.neutral)
 				parse.val_ret += ft_putstr_len(str, (int)ft_strlen(str));
 		}
 		else if (ft_strchr("sS", parse.type))
@@ -31,8 +35,6 @@ int		ft_display_char(char *str, p_f parse)
 		else
 			parse.val_ret += ft_putstr_len(str, (int)ft_strlen(str));
 	}
-	else if (ft_strchr("p", parse.type))
-		parse.val_ret += ft_putstr_len(str, (int)ft_strlen(str));
 	else
 		parse.val_ret += ft_putstr_len(str, (int)ft_strlen(str));
 	return (parse.val_ret);
