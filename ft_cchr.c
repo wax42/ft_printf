@@ -6,20 +6,20 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 15:05:03 by vguerand          #+#    #+#             */
-/*   Updated: 2018/01/12 15:00:40 by vguerand         ###   ########.fr       */
+/*   Updated: 2018/01/18 22:51:27 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char    ft_cchr(const char *s, int c)
+char	ft_cchr(const char *s, int c)
 {
-   int i;
+	int i;
 
-   i = 0;
-   while (s[i] != c && s[i])
-	   i++;
-   if (s[i] == c)
-	   return (s[i]);
-   return (0);
+	i = 0;
+	while (s[i] != c && s[i])
+		i++;
+	if (s[i] == c)
+		return (s[i]);
+	return (0);
 }

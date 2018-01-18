@@ -6,13 +6,13 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 15:53:33 by vguerand          #+#    #+#             */
-/*   Updated: 2017/12/13 16:03:29 by vguerand         ###   ########.fr       */
+/*   Updated: 2018/01/18 22:50:18 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_power(int nb, int power)
+int			ft_power(int nb, int power)
 {
 	if (power == 0)
 		return (1);
