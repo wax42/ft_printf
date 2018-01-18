@@ -6,7 +6,7 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 19:38:40 by vguerand          #+#    #+#             */
-/*   Updated: 2018/01/12 17:48:46 by vguerand         ###   ########.fr       */
+/*   Updated: 2018/01/19 00:34:52 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,4 +145,26 @@ int aff_struct(int str, p_f *parse);
 
 int     ft_display_htag(p_f parse);
 
+void    ft_parse_regle(p_f *parse);
+
+void    ft_parse_regle_2(p_f *parse);
+
+void        ft_parse_format3(const char *restrict format, p_f *parse,\
+va_list *ap);
+
+void        ft_parse_format2(const char *restrict format, p_f *parse,\
+va_list *ap);
+
+void        ft_parse_format1(const char *restrict format, p_f *parse,\
+  va_list *ap);
+
+void        ft_parse_format4(const char *restrict format, p_f *parse,\
+  va_list *ap);
+
+void        ft_parse_format0(const char *restrict format, p_f *parse,\
+      va_list *ap);
+
+void    ft_parse_format_ltr(const char *restrict format, p_f *parse);
+
+int    ft_parse_format_pourcent(const char *restrict format, p_f *parse);
 #endif
