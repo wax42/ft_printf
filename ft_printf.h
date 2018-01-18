@@ -6,7 +6,7 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 19:38:40 by vguerand          #+#    #+#             */
-/*   Updated: 2018/01/04 17:17:25 by vguerand         ###   ########.fr       */
+/*   Updated: 2018/01/12 17:48:46 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <unistd.h>
 //# include "libft/libft.h"
 # include <stdio.h>  //// nepas oublier de virer ce fdp
+# define TIME_OUT 50
 
 typedef struct 		s_l
 {
@@ -28,9 +29,10 @@ typedef struct 		s_l
 typedef struct		s_f
 {
 	int neutral;
+	int pourcent;
 	char   		type;
-	char 			flag;
-	unsigned int htag;
+	p_l			flag;
+	p_l   htag;
 	p_l space; // width prendra0 si l'argument est posstif et 1 si il est negatif
 	p_l	zero;
 	p_l	neg;
@@ -41,11 +43,15 @@ typedef struct		s_f
 	int 	val_ret;
 }					p_f;
 
+char		*ft_itoa_unsigned(unsigned int n);
+
 void		ft_print_struct(p_f parse);
 
 int 	ft_printf(const char * restrict format, ...);
 
-int 	ft_display(const char *restrict format, va_list *ap, p_f parse);
+int ft_display_capital_s(va_list *ap, p_f parse);
+
+int 	ft_display(va_list *ap, p_f parse);
 
 int			ft_putnchar(char c, int n);
 
@@ -77,7 +83,7 @@ int		ft_index_mot(char *str, int mot, char separateur);
 
 void	ft_memdel(void **ap);
 
-unsigned char  *ft_itoa_long(long long int n);
+unsigned char  *ft_itoa_long(unsigned long long int n);
 
 int   	ft_nbrlen(int n, int base);
 
@@ -85,7 +91,7 @@ char    ft_cchr(const char *s, int c);
 
 char    *ft_itoa_base(int n, int base, int uppercase);
 
-char    *ft_itoa_base_max(unsigned long long int n, int base, int uppercase);
+char    *ft_itoa_base_max(unsigned long long int n, int ba, int uppercase);
 
 int		ft_atoi_base(char *nb, int base);
 
@@ -93,27 +99,27 @@ void	ft_putwchar(wchar_t c);
 
 int find_nbr(p_f parse, int size, int str);
 
-int ft_display_s(const char *restrict format, va_list *ap, p_f parse);
+int ft_display_s(va_list *ap, p_f parse);
 
-int ft_display_di_h(const char *restrict format, va_list *ap, p_f parse);
+int ft_display_di_h(va_list *ap, p_f parse);
 
-int ft_display_di_hh(const char *restrict format, va_list *ap, p_f parse);
+int ft_display_di_hh(va_list *ap, p_f parse);
 
-int ft_display_di_l(const char *restrict format, va_list *ap, p_f parse);
+int ft_display_di_l(va_list *ap, p_f parse);
 
-int ft_display_di_ll(const char *restrict format, va_list *ap, p_f parse);
+int ft_display_di_ll(va_list *ap, p_f parse);
 
-int ft_display_di_j(const char *restrict format, va_list *ap, p_f parse);
+int ft_display_di_j(va_list *ap, p_f parse);
 
-int ft_display_di_z(const char *restrict format, va_list *ap, p_f parse);
+int ft_display_p(va_list *ap, p_f parse);
 
-int ft_display_p(const char *restrict format, va_list *ap, p_f parse);
+int ft_display_di_none(va_list *ap, p_f parse);
 
-int ft_display_di_none(const char *restrict format, va_list *ap, p_f parse);
+int ft_display_little_c(va_list *ap, p_f parse);
 
-int ft_display_little_c(const char *restrict format, va_list *ap, p_f parse);
+int ft_display_capital_c(va_list *ap, p_f parse);
 
-int ft_display_capital_c(const char *restrict format, va_list *ap, p_f parse);
+int ft_display_di_z(va_list *ap, p_f parse);
 
 int 	ft_display_c(int size, int c);
 
@@ -121,17 +127,21 @@ int 	ft_display_char(char *str, p_f parse);
 
 int		ft_putstr_len(char const *s, int len);
 
+int ft_len_unicode(wchar_t str, int precision);
+
 p_f		ft_init_struct(void);
 
 char 	*ft_strrev(char *str);
 
 size_t	ft_wstrlen(wchar_t* str);
 
+size_t	ft_wstrlen_byte(wchar_t* str, int precision);
+
 int ft_display_wchar(wchar_t *str, p_f parse);
 
 size_t ft_putwstr_len(wchar_t *s, size_t len);
 
-int aff_struct(int str, p_f parse);
+int aff_struct(int str, p_f *parse);
 
 int     ft_display_htag(p_f parse);
 

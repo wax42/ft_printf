@@ -6,7 +6,7 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 19:26:48 by vguerand          #+#    #+#             */
-/*   Updated: 2018/01/04 17:03:52 by vguerand         ###   ########.fr       */
+/*   Updated: 2018/01/12 18:24:43 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,17 @@
 
 int find_nbr(p_f parse, int size, int str)
 {
-	if (ft_strchr("s,S", parse.type) && parse.precision.val == 1)
-		return (parse.precision.width > str ? ((parse.neg.val) ? (parse.neg.width - str) : str): size - parse.precision.width);
+	if ((!str && parse.neg.width != size))
+		return (parse.width.width);
+	else if (ft_strchr("s,S,C", parse.type) && parse.precision.val == 1 && parse.neg.val == 0 && str)
+			return (parse.precision.width > str ? (size - str): size - parse.precision.width);
+	else if (ft_strchr("s,S,C", parse.type) && parse.neg.val == 1 && parse.precision.val == 1)
+		return (parse.precision.width > str ? (size - str): size - parse.precision.width);
 	else
-		return (size - str - parse.space.width);
+		{
+			if (size < parse.precision.width || (parse.precision.val == 0 || parse.precision.width == 0) || (parse.precision.width < str))
+				return (size - str - parse.space.width - parse.plus);
+			else
+				return (size - parse.space.width - parse.precision.width - parse.plus);
+		}
 }

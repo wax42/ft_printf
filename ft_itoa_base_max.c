@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.base_max.c                                 :+:      :+:    :+:   */
+/*   ft_itoa_base_max.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 16:44:22 by vguerand          #+#    #+#             */
-/*   Updated: 2017/12/18 13:44:41 by vguerand         ###   ########.fr       */
+/*   Updated: 2018/01/12 17:53:41 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-unsigned char        *ft_str_itoa(long long int len, long long int n, int neg)
+unsigned char        *ft_str_itoa(unsigned long long int len, unsigned long long int n, int neg)
 {
     unsigned char *str;
 
@@ -31,46 +31,21 @@ unsigned char        *ft_str_itoa(long long int len, long long int n, int neg)
 }
 
 
-unsigned char            *ft_itoa_long(long long int n)
+unsigned char            *ft_itoa_long(unsigned long long int n)
 {
-    long long int    i;
-    long long int    l;
+    unsigned long long int    i;
+    unsigned long long int    l;
     int        neg;
 
     i = n;
     l = 2;
     neg = 0;
-    if (n < 0)
-    {
-        n = -n;
-        neg = 1;
-    }
     while (i /= 10)
         l++;
     l = l + neg;
     return (ft_str_itoa(l, n, neg));
 }
 
-
-
-char         *ft_strrev(char *str)
-{
-    char *tmp;
-    int i;
-    int k;
-
-    i = ft_strlen(str);
-    k = 0;
-    tmp = (char *)malloc(sizeof(char) * i + 1);
-    while(i--)
-    {
-        tmp[k] = str[i];
-        k++;
-    }
-    tmp[k] = '\0';
-    ft_strdel(&str);
-    return (tmp);
-}
 
 int   ft_nbrlen_max(unsigned long long n, unsigned long long base)
 {
@@ -112,5 +87,5 @@ char    *ft_itoa_base_max(unsigned long long  n, int ba, int uppercase)
         n /= base;
     }
     str[i] = '\0';
-    return (ft_strrev(str));
+	return (ft_strrev(str));
 }

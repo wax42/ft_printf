@@ -6,48 +6,62 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 16:36:11 by vguerand          #+#    #+#             */
-/*   Updated: 2017/12/25 20:31:15 by vguerand         ###   ########.fr       */
+/*   Updated: 2018/01/18 21:55:05 by mbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_display_di_none(const char *restrict format, va_list *ap, p_f parse)
+int		ft_display_di_none(va_list *ap, p_f parse)
 {
-	int nbr;
-  int sa;
-	char *str;
+	int				sa;
+	unsigned int	la;
+	char			*str;
 
-  sa = 0;
-	nbr = 0;
-  str = NULL;
-	if (!(parse.type = ft_cchr("dDioOuxX", format[parse.i])))
+	sa = 0;
+	la = 0;
+	str = NULL;
+	if (!(ft_cchr("diuoxXO", parse.type)))
 		return (0);
-  (parse.type == 'u' || parse.type == 'U') ? (sa = va_arg(*ap, unsigned int)) : (sa = va_arg(*ap, int));
-  (sa < 0) ? (parse.space.width = 1) : (parse.space.width = 0);
-  (parse.space.width) ? sa = -sa : sa;
-  (parse.type == 'u') ? str = ft_itoa_base(sa, 10, 0) : str;
-  (parse.type == 'd' || parse.type == 'D') ? str = ft_itoa_base(sa, 10, 0) : str;
-  (parse.type == 'i') ? str = ft_itoa_base(sa, 10, 0) : str;
-	((parse.type == 'o' || parse.type == 'O') && !(parse.space.width)) ? str = ft_itoa_base(sa, 8, 0) : str;
-	if (sa == 0)
+	(parse.type == 'u') ? (la = (unsigned int)va_arg(*ap, unsigned int)) : (sa = (int)va_arg(*ap, int));
+	(sa < 0) ? (parse.space.width = 1) : (parse.space.width = 0);
+	(parse.space.width) ? sa = -sa : sa;
+	(parse.type == 'u') ? str = ft_itoa_unsigned(la) : str;
+	(parse.type == 'd') ? str = ft_itoa(sa) : str;
+	(parse.type == 'i') ? str = ft_itoa_base(sa, 10, 0) : str;
+	(parse.type == 'x') ? str = ft_itoa_base(sa, 16, 0) : str;
+	(parse.type == 'X') ? str = ft_itoa_base(sa, 16, 1) : str;
+	(parse.type == 'o' && !(parse.space.width)) ? str = ft_itoa_base(sa, 8, 0) : str;
+	if (sa == 0 && la == 0)
+	{
+		(parse.precision.val == 1 && parse.precision.width == 0) ? (str = "") : str;
 		parse.neutral = 1;
-	if ((parse.type == 'o' || parse.type == 'O') && parse.space.width)
-	{
-	   str = ft_itoa_base_max(4294967296 - sa,8,0);
-		 parse.space.width = 0;
+		if (parse.type == 'o' && parse.htag.val)
+		{
+			str = "";
+			parse.neutral = 0;
+		}
 	}
-	if ((parse.type == 'u' || parse.type == 'U') && parse.space.width)
+	if ((parse.type == 'o') && parse.space.width)
 	{
-		 str = ft_itoa_base_max(4294967296 - sa,10,0);
-		 parse.space.width = 0;
+		str = ft_itoa_base_max(4294967296 - sa, 8, 0);
+		parse.space.width = 0;
 	}
-
-  (parse.type == 'x') ? str = ft_itoa_base(sa, 16, 0) : str;
-  (parse.type == 'X') ? str = ft_itoa_base(sa, 16, 1) : str;
-  parse.val_ret += aff_struct((int)ft_strlen(str), parse);
-  parse.val_ret = ft_display_char(str, parse);
-  if (parse.neg.val)
-    parse.val_ret += ft_display_c(find_nbr(parse, parse.neg.width, (int)ft_strlen(str)), 32);
+	if ((parse.type == 'x') && parse.space.width)
+	{
+		str = ft_itoa_base_max(4294967296 - sa, 16, 0);
+		parse.space.width = 0;
+	}
+	if (parse.type == 'X' && parse.space.width)
+	{
+		str = ft_itoa_base_max(4294967295 - sa + 1, 16, 1);
+		parse.space.width = 0;
+	}
+	parse.val_ret = aff_struct((int)ft_strlen(str), &parse);
+	parse.val_ret = ft_display_char(str, parse);
+	if (parse.neg.val && parse.precision.width <= parse.neg.width)
+		parse.val_ret += ft_display_c(find_nbr(parse, parse.neg.width - parse.htag.width + parse.plus, (int)ft_strlen(str)), 32);
+	if (str[0] != '\0')
+		ft_strdel(&str);
 	return (parse.val_ret);
 }

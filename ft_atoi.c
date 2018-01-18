@@ -24,24 +24,16 @@ static int		ft_pass(const char *str)
 int				ft_atoi(const char *str)
 {
 	unsigned int	nb;
-	int				neg;
 	int				i;
 
-	neg = 0;
 	nb = 0;
 	i = ft_pass(str);
-	if (str[i] == '-')
-		neg = 1;
-	if (str[i] == '-' || str[i] == '+')
+	if (str[i] == '+')
 		i++;
 	while (str[i] <= '9' && str[i] >= '0')
 	{
 		nb = nb * 10 + str[i] - '0';
 		i++;
-	}
-	if (neg == 1)
-	{
-		nb = -nb;
 	}
 	return (nb);
 }

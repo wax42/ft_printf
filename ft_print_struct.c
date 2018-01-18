@@ -14,12 +14,16 @@
 
 void		ft_print_struct(p_f parse)
 {
-
-	printf("\nparse.htag :\t%d\n", parse.htag);
+	printf("\n,\n");
+	printf("htag :\t%d\t%d\n", parse.htag.val, parse.htag.width);
 
 	printf("precision :\t%d\t%d\n", parse.precision.val, parse.precision.width);
 
 	printf("space :\t%d\t%d\n", parse.space.val, parse.space.width);
+
+	printf("type : \t%c\n", parse.type);
+
+	printf("flag:\t%c\t%d\n", parse.flag.val, parse.flag.width);
 
 	printf("zero :\t%d\t%d\n", parse.zero.val, parse.zero.width);
 
@@ -27,5 +31,5 @@ void		ft_print_struct(p_f parse)
 
 	printf("parse.plus :\t%d\n", parse.plus);
 
-	printf("neg :\t%d\t%d\n", parse.width.val, parse.width.width);
+	printf("width :\t%d\t%d\n", parse.width.val, parse.width.width);
 }
