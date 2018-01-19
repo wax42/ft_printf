@@ -6,13 +6,13 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 19:39:39 by vguerand          #+#    #+#             */
-/*   Updated: 2018/01/12 16:48:04 by vguerand         ###   ########.fr       */
+/*   Updated: 2018/01/19 01:16:18 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_parse_format_all(const char *restrict format, p_f *parse,\
+void		ft_parse_format_all(const char *restrict format, p_f *parse, \
 	va_list *ap)
 {
 	ft_parse_format0(format, parse, ap);
@@ -22,7 +22,8 @@ void	ft_parse_format_all(const char *restrict format, p_f *parse,\
 	ft_parse_format4(format, parse, ap);
 }
 
-p_f		ft_parse_format(const char *restrict format, int i, va_list *ap)
+p_f			ft_parse_format(const char *restrict format, int i, \
+	va_list *ap)
 {
 	p_f		parse;
 	char	*tmp;
@@ -50,13 +51,33 @@ p_f		ft_parse_format(const char *restrict format, int i, va_list *ap)
 	return (parse);
 }
 
-int		ft_printf(const char *restrict format, ...)
+static int	ft_printf1(const char *restrict format, int *i, int val_ret, \
+	va_list *ap)
+{
+	int		a;
+	p_f		parse;
+
+	if (format[*i] == '%')
+	{
+		parse = ft_parse_format(format, *i + 1, ap);
+		val_ret += parse.val_ret;
+		*i = parse.i;
+		if (parse.pourcent == 0)
+		{
+			if ((a = ft_display(ap, parse)) == -1)
+				return (-1);
+			else
+				val_ret += a;
+		}
+	}
+	return (val_ret);
+}
+
+int			ft_printf(const char *restrict format, ...)
 {
 	int		i;
-	int		a;
-	int 	val_ret;
+	int		val_ret;
 	va_list ap;
-	p_f		parse;
 
 	val_ret = 0;
 	va_start(ap, format);
@@ -68,19 +89,8 @@ int		ft_printf(const char *restrict format, ...)
 			val_ret += ft_putnchar(format[i], 1);
 			i++;
 		}
-		if (format[i] == '%')
-		{
-			parse = ft_parse_format(format, i + 1, &ap);
-			val_ret += parse.val_ret;
-			i = parse.i;
-			if (parse.pourcent == 0)
-			{
-				if ((a = ft_display(&ap, parse)) == -1)
-					return (-1);
-				else
-					val_ret += a;
-			}
-		}
+		if ((val_ret = ft_printf1(format, &i, val_ret, &ap)) == -1)
+			return (-1);
 		if (i >= (int)ft_strlen((char *)format))
 			break ;
 	}
