@@ -6,13 +6,13 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 16:36:11 by vguerand          #+#    #+#             */
-/*   Updated: 2018/01/18 23:27:43 by vguerand         ###   ########.fr       */
+/*   Updated: 2018/01/19 01:44:44 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	ft_display_di_h2(char *str, p_f *parse)
+static void	ft_display_di_h2(char *str, t_f *parse)
 {
 	parse->val_ret = aff_struct((int)ft_strlen(str), parse);
 	parse->val_ret = ft_display_char(str, *parse);
@@ -22,7 +22,7 @@ static void	ft_display_di_h2(char *str, p_f *parse)
 	ft_strdel(&str);
 }
 
-int			ft_display_di_h(va_list *ap, p_f parse)
+int			ft_display_di_h(va_list *ap, t_f parse)
 {
 	int		sa;
 	char	*str;

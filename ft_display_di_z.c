@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-static void	ft_display_di_z2(p_f *parse, char *str)
+static void	ft_display_di_z2(t_f *parse, char *str)
 {
 	parse->val_ret = aff_struct((int)ft_strlen(str), parse);
 	parse->val_ret = ft_display_char(str, *parse);
@@ -23,7 +23,7 @@ static void	ft_display_di_z2(p_f *parse, char *str)
 		ft_strdel(&str);
 }
 
-int			ft_display_di_z(va_list *ap, p_f parse)
+int			ft_display_di_z(va_list *ap, t_f parse)
 {
 	size_t		sa;
 	intmax_t	la;

@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-static void	ft_display_di_hh2(char *str, p_f *parse)
+static void	ft_display_di_hh2(char *str, t_f *parse)
 {
 	parse->val_ret = aff_struct((int)ft_strlen(str), parse);
 	parse->val_ret = ft_display_char(str, *parse);
@@ -22,7 +22,7 @@ static void	ft_display_di_hh2(char *str, p_f *parse)
 	ft_strdel(&str);
 }
 
-int			ft_display_di_hh(va_list *ap, p_f parse)
+int			ft_display_di_hh(va_list *ap, t_f parse)
 {
 	int		sa;
 	char	*str;

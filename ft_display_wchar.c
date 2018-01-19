@@ -76,7 +76,7 @@ int	ft_putwstr(wchar_t *str, int size, int precision)
 	return (val_ret);
 }
 
-int	ft_display_wchar(wchar_t *str, p_f parse)
+int	ft_display_wchar(wchar_t *str, t_f parse)
 {
 	size_t size;
 

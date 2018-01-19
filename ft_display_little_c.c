@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-int		ft_display_little_c(va_list *ap, p_f parse)
+int		ft_display_little_c(va_list *ap, t_f parse)
 {
 	char	str;
 

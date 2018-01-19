@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_parse_format3.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/01/19 01:23:25 by vguerand          #+#    #+#             */
+/*   Updated: 2018/01/19 01:23:26 by vguerand         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-static void	ft_parse_format3_zero(const char *restrict format, p_f *parse)
+static void	ft_parse_format3_zero(const char *restrict format, t_f *parse)
 {
 	char *tmp;
 
@@ -15,7 +27,7 @@ static void	ft_parse_format3_zero(const char *restrict format, p_f *parse)
 	ft_strdel(&tmp);
 }
 
-void		ft_parse_format3(const char *restrict format, p_f *parse,\
+void		ft_parse_format3(const char *restrict format, t_f *parse,\
 	va_list *ap)
 {
 	char *tmp;

@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_parse_format_ltr.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/01/19 01:27:16 by vguerand          #+#    #+#             */
+/*   Updated: 2018/01/19 01:44:44 by vguerand         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-void	ft_parse_format_ltr(const char *restrict format, p_f *parse)
+void	ft_parse_format_ltr(const char *restrict format, t_f *parse)
 {
 	while ((ft_cchr("l", format[parse->i])))
 	{
@@ -26,6 +38,5 @@ void	ft_parse_format_ltr(const char *restrict format, p_f *parse)
 		parse->flag.width++;
 		parse->i++;
 	}
-	parse->type = format[parse->i];
-	parse->i++;
+	parse->type = format[parse->i++];
 }

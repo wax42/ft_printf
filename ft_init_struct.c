@@ -12,9 +12,9 @@
 
 #include "ft_printf.h"
 
-p_f		ft_init_struct(void)
+t_f		ft_init_struct(void)
 {
-	p_f parse;
+	t_f parse;
 
 	parse.neutral = 0;
 	parse.precision.val = 0;

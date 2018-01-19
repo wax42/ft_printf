@@ -6,13 +6,13 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 16:36:11 by vguerand          #+#    #+#             */
-/*   Updated: 2018/01/19 00:46:54 by vguerand         ###   ########.fr       */
+/*   Updated: 2018/01/19 01:44:44 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_display_p(va_list *ap, p_f parse)
+int	ft_display_p(va_list *ap, t_f parse)
 {
 	unsigned long	sa;
 	char			*str;

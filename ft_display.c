@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-int		ft_display(va_list *ap, p_f parse)
+int		ft_display(va_list *ap, t_f parse)
 {
 	if ((parse.val_ret = ft_display_p(ap, parse)))
 		return (parse.val_ret);

@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-static	int	aff_struct2(int str, p_f *parse)
+static	int	aff_struct2(int str, t_f *parse)
 {
 	if ((parse->width.val == 1) || (parse->zero.val == 1 && parse->neg.val == 0\
 		&& parse->precision.val == 0))
@@ -38,7 +38,7 @@ static	int	aff_struct2(int str, p_f *parse)
 	return (parse->val_ret);
 }
 
-int			aff_struct(int str, p_f *parse)
+int			aff_struct(int str, t_f *parse)
 {
 	if (parse->precision.val && parse->zero.val && !parse->plus && parse->type \
 		!= 's' && parse->type != 'S')

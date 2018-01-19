@@ -21,7 +21,7 @@ void		ft_strwdel(wchar_t **as)
 	}
 }
 
-static int	ft_display_capital_s1(p_f parse)
+static int	ft_display_capital_s1(t_f parse)
 {
 	parse.val_ret = aff_struct((int)ft_strlen("(null)"), &parse);
 	parse.val_ret = ft_display_char("(null)", parse);
@@ -31,7 +31,7 @@ static int	ft_display_capital_s1(p_f parse)
 	return (parse.val_ret);
 }
 
-int			ft_display_capital_s(va_list *ap, p_f parse)
+int			ft_display_capital_s(va_list *ap, t_f parse)
 {
 	wchar_t *str1;
 

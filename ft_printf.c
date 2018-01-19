@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-void		ft_parse_format_all(const char *restrict format, p_f *parse, \
+void		ft_parse_format_all(const char *restrict format, t_f *parse, \
 	va_list *ap)
 {
 	ft_parse_format0(format, parse, ap);
@@ -22,10 +22,10 @@ void		ft_parse_format_all(const char *restrict format, p_f *parse, \
 	ft_parse_format4(format, parse, ap);
 }
 
-p_f			ft_parse_format(const char *restrict format, int i, \
+t_f			ft_parse_format(const char *restrict format, int i, \
 	va_list *ap)
 {
-	p_f		parse;
+	t_f		parse;
 	char	*tmp;
 
 	tmp = NULL;
@@ -55,7 +55,7 @@ static int	ft_printf1(const char *restrict format, int *i, int val_ret, \
 	va_list *ap)
 {
 	int		a;
-	p_f		parse;
+	t_f		parse;
 
 	if (format[*i] == '%')
 	{

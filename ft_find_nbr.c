@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-int	find_nbr(p_f parse, int size, int str)
+int	find_nbr(t_f parse, int size, int str)
 {
 	if ((!str && parse.neg.width != size))
 		return (parse.width.width);

@@ -6,13 +6,13 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 16:36:11 by vguerand          #+#    #+#             */
-/*   Updated: 2018/01/19 00:12:18 by vguerand         ###   ########.fr       */
+/*   Updated: 2018/01/19 01:44:44 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static char	*ft_display_di_l3(p_f *parse, long int sa, unsigned long long *la, \
+static char	*ft_display_di_l3(t_f *parse, long int sa, unsigned long long *la, \
 	char *str)
 {
 	(sa < 0) ? (parse->space.width = 1) : parse->space.width;
@@ -37,7 +37,7 @@ static char	*ft_display_di_l3(p_f *parse, long int sa, unsigned long long *la, \
 	return (str);
 }
 
-static void	ft_display_di_l2(char *str, p_f *parse)
+static void	ft_display_di_l2(char *str, t_f *parse)
 {
 	parse->val_ret = aff_struct((int)ft_strlen(str), parse);
 	parse->val_ret = ft_display_char(str, *parse);
@@ -48,7 +48,7 @@ static void	ft_display_di_l2(char *str, p_f *parse)
 		ft_strdel(&str);
 }
 
-static int	ft_condition(p_f *parse)
+static int	ft_condition(t_f *parse)
 {
 	if (ft_cchr("DUO", parse->type))
 	{
@@ -61,7 +61,7 @@ static int	ft_condition(p_f *parse)
 	return (1);
 }
 
-int			ft_display_di_l(va_list *ap, p_f parse)
+int			ft_display_di_l(va_list *ap, t_f parse)
 {
 	long int				sa;
 	unsigned long long int	la;

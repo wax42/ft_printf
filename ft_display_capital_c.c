@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-int	ft_capital_n(p_f *parse, int n, wchar_t str)
+int	ft_capital_n(t_f *parse, int n, wchar_t str)
 {
 	parse->val_ret = aff_struct(n, parse);
 	parse->val_ret += n;
@@ -29,7 +29,7 @@ int	ft_capital_n(p_f *parse, int n, wchar_t str)
 	return (parse->val_ret);
 }
 
-int	ft_display_capital_c(va_list *ap, p_f parse)
+int	ft_display_capital_c(va_list *ap, t_f parse)
 {
 	wchar_t str;
 

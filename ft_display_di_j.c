@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-static void	ft_display_di_j2(int sa, char *str, p_f *parse)
+static void	ft_display_di_j2(int sa, char *str, t_f *parse)
 {
 	if (parse->type == 'X' && parse->space.width)
 	{
@@ -30,7 +30,7 @@ static void	ft_display_di_j2(int sa, char *str, p_f *parse)
 		ft_strdel(&str);
 }
 
-int			ft_display_di_j(va_list *ap, p_f parse)
+int			ft_display_di_j(va_list *ap, t_f parse)
 {
 	intmax_t	sa;
 	uintmax_t	la;

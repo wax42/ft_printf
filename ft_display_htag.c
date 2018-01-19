@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-int		ft_display_htag(p_f parse)
+int		ft_display_htag(t_f parse)
 {
 	if ((parse.type == 'o' || parse.type == 'O') && (!(parse.neutral)))
 	{

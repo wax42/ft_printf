@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-static void	ft_display_di_none2(char *str, p_f *parse, int sa)
+static void	ft_display_di_none2(char *str, t_f *parse, int sa)
 {
 	if ((parse->type == 'x') && parse->space.width)
 	{
@@ -33,7 +33,7 @@ static void	ft_display_di_none2(char *str, p_f *parse, int sa)
 		ft_strdel(&str);
 }
 
-static char	*ft_display_di_none1(char *str, p_f *parse, int sa, unsigned la)
+static char	*ft_display_di_none1(char *str, t_f *parse, int sa, unsigned la)
 {
 	(parse->type == 'u') ? str = ft_itoa_unsigned(la) : str;
 	(parse->type == 'd') ? str = ft_itoa(sa) : str;
@@ -61,7 +61,7 @@ static char	*ft_display_di_none1(char *str, p_f *parse, int sa, unsigned la)
 	return (str);
 }
 
-int			ft_display_di_none(va_list *ap, p_f parse)
+int			ft_display_di_none(va_list *ap, t_f parse)
 {
 	int				sa;
 	unsigned int	la;

@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-int		ft_display_char(char *str, p_f parse)
+int		ft_display_char(char *str, t_f parse)
 {
 	if (parse.precision.val == 1)
 	{

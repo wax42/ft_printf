@@ -22,7 +22,7 @@ size_t	ft_wstr_len(wchar_t *str)
 	return (i);
 }
 
-int		ft_display_s(va_list *ap, p_f parse)
+int		ft_display_s(va_list *ap, t_f parse)
 {
 	char *str;
 

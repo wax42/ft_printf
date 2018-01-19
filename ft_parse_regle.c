@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-void	ft_parse_regle_2(p_f *parse)
+void	ft_parse_regle_2(t_f *parse)
 {
 	if (parse->precision.width > parse->width.width && (parse->type != 's'))
 	{
@@ -40,7 +40,7 @@ void	ft_parse_regle_2(p_f *parse)
 		parse->plus = 0;
 }
 
-void	ft_parse_regle(p_f *parse)
+void	ft_parse_regle(t_f *parse)
 {
 	if (parse->plus && (ft_strchr("oOsScCuUxXp", parse->type)))
 		parse->plus = 0;

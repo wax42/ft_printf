@@ -1,5 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_parse_format.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/01/19 01:35:58 by vguerand          #+#    #+#             */
+/*   Updated: 2018/01/19 01:44:44 by vguerand         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
-void	ft_parse_format_all(const char *restrict format, p_f *parse,\
+
+void	ft_parse_format_all(const char *restrict format, t_f *parse,\
 	va_list *ap)
 {
 	ft_parse_format0(format, parse, ap);
@@ -9,9 +22,9 @@ void	ft_parse_format_all(const char *restrict format, p_f *parse,\
 	ft_parse_format4(format, parse, ap);
 }
 
-p_f		ft_parse_format(const char *restrict format, int i, va_list *ap)
+t_f		ft_parse_format(const char *restrict format, int i, va_list *ap)
 {
-	p_f		parse;
+	t_f		parse;
 	char	*tmp;
 
 	tmp = NULL;
