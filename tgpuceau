@@ -1,1 +1,0 @@
-make && cp libftprintf.a ../PRINTF_TEST/ && (cd ../PRINTF_TEST/ && make) && (cd ../PRINTF_TEST/ && ./ft_printf_tests)
